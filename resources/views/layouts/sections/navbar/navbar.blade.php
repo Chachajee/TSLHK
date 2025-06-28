@@ -18,7 +18,7 @@ $navbarDetached = ($navbarDetached ?? '');
       @if(isset($navbarFull))
         <div class="navbar-brand app-brand demo d-none d-xl-flex py-0 me-4">
           <a href="{{url('/')}}" class="app-brand-link">
-            <span class="app-brand-logo demo">@include('_partials.macros',["height"=>20])</span>
+            <span class="app-brand-logo demo"><img src="{{ asset('assets/img/tsl-logo.png') }}" alt="TSL Logo" height="32"></span>
             <span class="app-brand-text demo menu-text fw-bold">{{config('variables.templateName')}}</span>
           </a>
         </div>

@@ -9,7 +9,7 @@ $configData = Helper::appClasses();
   @if(!isset($navbarFull))
     <div class="app-brand demo">
       <a href="{{url('/')}}" class="app-brand-link">
-        <span class="app-brand-logo demo">@include('_partials.macros',["height"=>20])</span>
+        <span class="app-brand-logo demo"><img src="{{ asset('assets/img/tsl-logo.png') }}" alt="TSL Logo" height="32"></span>
         <span class="app-brand-text demo menu-text fw-bold">{{config('variables.templateName')}}</span>
       </a>
 

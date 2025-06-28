@@ -42,8 +42,8 @@ $customizerHidden = 'customizer-hide';
           <!-- Logo -->
           <div class="app-brand justify-content-center mb-6">
             <a href="{{url('/')}}" class="app-brand-link">
-              <span class="app-brand-logo demo">@include('_partials.macros',['height'=>20,'withbg' => "fill: #fff;"])</span>
-              <span class="app-brand-text demo text-heading fw-bold">{{ config('variables.templateName') }}</span>
+              <span class="app-brand-logo demo"><img src="{{ asset('assets/img/tsl-logo.png') }}" alt="TSL Logo" height="48"></span>
+              <span class="app-brand-text demo text-heading fw-bold">TSLHK</span>
             </a>
           </div>
           <!-- /Logo -->
@@ -73,13 +73,6 @@ $customizerHidden = 'customizer-hide';
               <button class="btn btn-primary d-grid w-100" type="submit">Login</button>
             </div>
           </form>
-
-          <p class="text-center">
-            <span>New on our platform?</span>
-            <a href="{{url('auth/register-basic')}}">
-              <span>Create an account</span>
-            </a>
-          </p>
         </div>
       </div>
       <!-- /Register -->

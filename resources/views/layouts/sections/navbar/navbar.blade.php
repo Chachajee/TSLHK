@@ -76,19 +76,19 @@ $navbarDetached = ($navbarDetached ?? '');
             <ul class="dropdown-menu dropdown-menu-end">
               <li>
                 <div class="d-flex align-items-center p-3">
-                  <div class="flex-shrink-0 me-2">
-                    <div class="avatar avatar-online">
+                    <div class="flex-shrink-0 me-2">
+                      <div class="avatar avatar-online">
                       <img src="{{ Auth::user() ? Auth::user()->profile_photo_url ?? asset('assets/img/avatars/1.png') : asset('assets/img/avatars/1.png') }}" alt class="rounded-circle">
+                      </div>
                     </div>
-                  </div>
-                  <div class="flex-grow-1">
-                    <h6 class="mb-0">
-                      @if (Auth::check())
-                        {{ Auth::user()->name }}
-                      @else
+                    <div class="flex-grow-1">
+                      <h6 class="mb-0">
+                        @if (Auth::check())
+                          {{ Auth::user()->name }}
+                        @else
                         Guest
-                      @endif
-                    </h6>
+                        @endif
+                      </h6>
                     <small class="text-muted">
                       @if (Auth::check())
                         {{ Auth::user()->email }}
@@ -103,11 +103,11 @@ $navbarDetached = ($navbarDetached ?? '');
               @if (Auth::check() && session('is_admin'))
                 <li>
                   <form method="POST" action="{{ route('auth-logout-basic') }}" class="px-3 mb-2">
-                    @csrf
+                  @csrf
                     <button type="submit" class="btn btn-danger w-100">
                       <i class="ti ti-logout me-2"></i> Logout
                     </button>
-                  </form>
+                </form>
                 </li>
               @endif
             </ul>

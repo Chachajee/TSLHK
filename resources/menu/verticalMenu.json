@@ -5,6 +5,31 @@
       "name": "Home",
       "icon": "menu-icon tf-icons ti ti-smart-home",
       "slug": "pages-home"
+    },
+    {
+      "name": "Invoice Generator",
+      "icon": "menu-icon tf-icons ti ti-file-invoice",
+      "slug": "invoice-generator",
+      "submenu": [
+        {
+          "url": "/admin/invoices",
+          "name": "Invoice List",
+          "icon": "menu-icon tf-icons ti ti-list",
+          "slug": "invoice-list"
+        },
+        {
+          "url": "/admin/invoices/create",
+          "name": "Create Invoice",
+          "icon": "menu-icon tf-icons ti ti-plus",
+          "slug": "invoice-create"
+        },
+        {
+          "url": "/admin/invoice-parties",
+          "name": "Invoice Parties",
+          "icon": "menu-icon tf-icons ti ti-users",
+          "slug": "invoice-parties"
+        }
+      ]
     }
   ]
 }

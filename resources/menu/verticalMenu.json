@@ -30,6 +30,25 @@
           "slug": "invoice-parties"
         }
       ]
+    },
+    {
+      "name": "Salary Management",
+      "icon": "menu-icon tf-icons ti ti-cash",
+      "slug": "salary-management",
+      "submenu": [
+        {
+          "url": "/admin/salaries",
+          "name": "Salary Slips",
+          "icon": "menu-icon tf-icons ti ti-list",
+          "slug": "admin.salaries.index"
+        },
+        {
+          "url": "/admin/salaries/create",
+          "name": "Create Salary Slip",
+          "icon": "menu-icon tf-icons ti ti-plus",
+          "slug": "admin.salaries.create"
+        }
+      ]
     }
   ]
 }

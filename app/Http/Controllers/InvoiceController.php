@@ -10,6 +10,7 @@ use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class InvoiceController extends Controller
 {
@@ -117,17 +118,37 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        $invoice->load(['items', 'billTo', 'shipTo', 'paymentInstructions']);
-        
-        return response()->json([
-            'success' => true,
-            'invoice' => $invoice,
-            'items' => $invoice->items,
-            'billTo' => $invoice->billTo,
-            'shipTo' => $invoice->shipTo,
-            'paymentInstructions' => $invoice->paymentInstructions,
-        ]);
+        try {
+            // Load all the relationships
+            $invoice->load(['items', 'billTo', 'shipTo', 'paymentInstructions']);
+
+            // Check if the invoice exists
+            if (!$invoice) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Invoice not found'
+                ], 404);
+            }
+
+            return response()->json([
+                'success' => true,
+                'invoice' => $invoice,
+                'items' => $invoice->items ?? [],
+                'billTo' => $invoice->billTo,
+                'shipTo' => $invoice->shipTo,
+                'paymentInstructions' => $invoice->paymentInstructions,
+            ]);
+
+        } catch (\Exception $e) {
+            \Log::error('Error loading invoice details: ' . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'message' => 'Error loading invoice details: ' . $e->getMessage()
+            ], 500);
+        }
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -135,7 +156,7 @@ class InvoiceController extends Controller
     public function edit(Invoice $invoice)
     {
         $invoice->load(['items', 'billTo', 'shipTo', 'paymentInstructions']);
-        
+
         return view('admin.invoices.edit', compact('invoice'));
     }
 
@@ -220,7 +241,7 @@ class InvoiceController extends Controller
     {
         try {
             $invoice->delete(); // Cascade delete will handle related records
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Invoice deleted successfully!'
@@ -230,6 +251,40 @@ class InvoiceController extends Controller
                 'success' => false,
                 'message' => 'Error deleting invoice: ' . $e->getMessage()
             ], 500);
+        }
+    }
+
+    /**
+     * Download invoice as PDF.
+     */
+    public function download(Invoice $invoice)
+    {
+        try {
+            // Load all the relationships
+            $invoice->load(['items', 'billTo', 'shipTo', 'paymentInstructions']);
+
+            // Prepare data for the PDF view
+            $data = [
+                'invoice' => $invoice,
+                'items' => $invoice->items ?? [],
+                'billTo' => $invoice->billTo,
+                'shipTo' => $invoice->shipTo,
+                'paymentInstructions' => $invoice->paymentInstructions,
+            ];
+
+            // Generate PDF
+            $pdf = Pdf::loadView('admin.invoices.pdf', $data);
+            
+            // Set paper size and orientation
+            $pdf->setPaper('a4', 'portrait');
+            
+            // Download the PDF with a descriptive filename
+            return $pdf->download("Invoice_{$invoice->invoice_no}.pdf");
+
+        } catch (\Exception $e) {
+            \Log::error('Error generating PDF: ' . $e->getMessage());
+            
+            return back()->with('error', 'Error generating PDF: ' . $e->getMessage());
         }
     }
 }

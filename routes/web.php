@@ -10,6 +10,7 @@ use App\Http\Controllers\authentications\RegisterBasic;
 use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\SalaryController;
 
 // Main Page Route
 
@@ -34,6 +35,23 @@ Route::middleware(['admin.auth'])->group(function () {
         'update' => 'admin.invoices.update',
         'destroy' => 'admin.invoices.destroy',
     ]);
+    
+    // Invoice download route
+    Route::get('/admin/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('admin.invoices.download');
+
+    // Salary routes
+    Route::resource('admin/salaries', SalaryController::class)->names([
+        'index' => 'admin.salaries.index',
+        'create' => 'admin.salaries.create',
+        'store' => 'admin.salaries.store',
+        'show' => 'admin.salaries.show',
+        'edit' => 'admin.salaries.edit',
+        'update' => 'admin.salaries.update',
+        'destroy' => 'admin.salaries.destroy',
+    ]);
+    
+    // Salary download route
+    Route::get('/admin/salaries/{salary}/download', [SalaryController::class, 'download'])->name('admin.salaries.download');
 });
 
 Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');

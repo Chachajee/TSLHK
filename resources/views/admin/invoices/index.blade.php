@@ -18,8 +18,20 @@
 @endsection
 
 @section('page-script')
+<style>
+.ti-spin {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+</style>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    let currentInvoiceId = null;
+    
     // Initialize DataTable
     const invoiceTable = $('#invoice-table').DataTable({
         processing: true,
@@ -34,6 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // View invoice modal
     window.viewInvoice = function(invoiceId) {
+        currentInvoiceId = invoiceId;
         fetch(`/admin/invoices/${invoiceId}`)
             .then(response => response.json())
             .then(data => {
@@ -44,52 +57,56 @@ document.addEventListener('DOMContentLoaded', function() {
                     const items = data.items;
                     const payment = data.paymentInstructions;
 
-                    // Populate modal content
-                    document.getElementById('modal-invoice-no').textContent = invoice.invoice_no;
-                    document.getElementById('modal-invoice-date').textContent = invoice.invoice_date;
-                    document.getElementById('modal-ship-via').textContent = invoice.ship_via;
-                    document.getElementById('modal-tracking-no').textContent = invoice.tracking_no;
-                    document.getElementById('modal-tax-id').textContent = invoice.tax_id || 'N/A';
-                    document.getElementById('modal-subtotal').textContent = '$' + parseFloat(invoice.subtotal).toFixed(2);
-                    document.getElementById('modal-shipping').textContent = '$' + parseFloat(invoice.shipping).toFixed(2);
-                    document.getElementById('modal-total').textContent = '$' + parseFloat(invoice.total).toFixed(2);
-                    document.getElementById('modal-paid').textContent = '$' + parseFloat(invoice.paid).toFixed(2);
-                    document.getElementById('modal-balance-due').textContent = '$' + parseFloat(invoice.balance_due).toFixed(2);
+                    // Populate modal content with null checks and professional formatting
+                    document.getElementById('modal-invoice-no').textContent = invoice.invoice_no || 'N/A';
+                    document.getElementById('modal-invoice-date').textContent = invoice.invoice_date ? new Date(invoice.invoice_date).toLocaleDateString() : 'N/A';
+                    document.getElementById('modal-ship-via').textContent = invoice.ship_via || 'N/A';
+                    document.getElementById('modal-tracking-no').textContent = invoice.tracking_no || 'N/A';
+                    document.getElementById('modal-subtotal').innerHTML = `<span class='badge bg-light text-dark'>$${parseFloat(invoice.subtotal || 0).toFixed(2)}</span>`;
+                    document.getElementById('modal-shipping').innerHTML = `<span class='badge bg-light text-dark'>$${parseFloat(invoice.shipping || 0).toFixed(2)}</span>`;
+                    document.getElementById('modal-total').innerHTML = `<span class='badge bg-primary'>$${parseFloat(invoice.total || 0).toFixed(2)}</span>`;
+                    document.getElementById('modal-paid').innerHTML = `<span class='badge bg-success'>$${parseFloat(invoice.paid || 0).toFixed(2)}</span>`;
+                    document.getElementById('modal-balance-due').innerHTML = `<span class='badge bg-${invoice.balance_due > 0 ? 'warning' : 'success'}'>$${parseFloat(invoice.balance_due || 0).toFixed(2)}</span>`;
                     document.getElementById('modal-notes').textContent = invoice.notes || 'No notes';
 
                     // Bill To
-                    document.getElementById('modal-bill-company').textContent = billTo.company_name;
-                    document.getElementById('modal-bill-address').textContent = billTo.address;
-                    document.getElementById('modal-bill-vat').textContent = billTo.vat_no;
-                    document.getElementById('modal-bill-eori').textContent = billTo.eori;
-                    document.getElementById('modal-bill-phone').textContent = billTo.phone;
-                    document.getElementById('modal-bill-email').textContent = billTo.email;
+                    document.getElementById('modal-bill-company').textContent = billTo?.company_name || 'N/A';
+                    document.getElementById('modal-bill-address').textContent = billTo?.address || 'N/A';
+                    document.getElementById('modal-bill-vat').textContent = billTo?.vat_no || 'N/A';
+                    document.getElementById('modal-bill-eori').textContent = billTo?.eori || 'N/A';
+                    document.getElementById('modal-bill-phone').textContent = billTo?.phone || 'N/A';
+                    document.getElementById('modal-bill-email').textContent = billTo?.email || 'N/A';
 
                     // Ship To
-                    document.getElementById('modal-ship-company').textContent = shipTo.company_name;
-                    document.getElementById('modal-ship-address').textContent = shipTo.address;
-                    document.getElementById('modal-ship-vat').textContent = shipTo.vat_no;
-                    document.getElementById('modal-ship-eori').textContent = shipTo.eori;
-                    document.getElementById('modal-ship-email').textContent = shipTo.email;
+                    document.getElementById('modal-ship-company').textContent = shipTo?.company_name || 'N/A';
+                    document.getElementById('modal-ship-address').textContent = shipTo?.address || 'N/A';
+                    document.getElementById('modal-ship-vat').textContent = shipTo?.vat_no || 'N/A';
+                    document.getElementById('modal-ship-eori').textContent = shipTo?.eori || 'N/A';
+                    document.getElementById('modal-ship-email').textContent = shipTo?.email || 'N/A';
 
                     // Payment Instructions
-                    document.getElementById('modal-bank-name').textContent = payment.bank_name;
-                    document.getElementById('modal-bank-code').textContent = payment.bank_code;
-                    document.getElementById('modal-swift-bic').textContent = payment.swift_bic;
-                    document.getElementById('modal-account-no').textContent = payment.multi_currency_ac_no;
+                    document.getElementById('modal-bank-name').textContent = payment?.bank_name || 'N/A';
+                    document.getElementById('modal-bank-code').textContent = payment?.bank_code || 'N/A';
+                    document.getElementById('modal-swift-bic').textContent = payment?.swift_bic || 'N/A';
+                    document.getElementById('modal-account-no').textContent = payment?.multi_currency_ac_no || 'N/A';
 
                     // Invoice Items
                     const itemsTable = document.getElementById('modal-items-table');
                     itemsTable.innerHTML = '';
-                    items.forEach(item => {
+                    if (items && items.length > 0) {
+                        items.forEach(item => {
+                            const row = itemsTable.insertRow();
+                            row.innerHTML = `
+                                <td><span class='fw-semibold'>${item.description || 'N/A'}</span></td>
+                                <td class='text-center'>${item.quantity || 0}</td>
+                                <td class='text-end'>$${parseFloat(item.rate || 0).toFixed(2)}</td>
+                                <td class='text-end'><span class='badge bg-light text-dark'>$${parseFloat(item.amount || 0).toFixed(2)}</span></td>
+                            `;
+                        });
+                    } else {
                         const row = itemsTable.insertRow();
-                        row.innerHTML = `
-                            <td>${item.description}</td>
-                            <td>${item.quantity}</td>
-                            <td>$${parseFloat(item.rate).toFixed(2)}</td>
-                            <td>$${parseFloat(item.amount).toFixed(2)}</td>
-                        `;
-                    });
+                        row.innerHTML = `<td colspan='4' class='text-center text-muted'>No items found</td>`;
+                    }
 
                     // Show modal
                     const modal = new bootstrap.Modal(document.getElementById('invoiceModal'));
@@ -102,6 +119,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
                 Swal.fire('Error', 'Failed to load invoice details', 'error');
             });
+    };
+
+    // Download invoice
+    window.downloadInvoice = function(invoiceId) {
+        const downloadBtn = document.getElementById('modal-download-btn');
+        const originalText = downloadBtn.innerHTML;
+        
+        // Show loading state
+        downloadBtn.innerHTML = '<i class="ti ti-loader ti-spin me-1"></i>Generating PDF...';
+        downloadBtn.disabled = true;
+        
+        // Trigger download
+        window.location.href = `/admin/invoices/${invoiceId}/download`;
+        
+        // Reset button after a short delay
+        setTimeout(() => {
+            downloadBtn.innerHTML = originalText;
+            downloadBtn.disabled = false;
+        }, 2000);
     };
 
     // Delete invoice
@@ -203,6 +239,9 @@ document.addEventListener('DOMContentLoaded', function() {
                                             </button>
                                             <a href="{{ route('admin.invoices.edit', $invoice->id) }}" class="btn btn-sm btn-warning">
                                                 <i class="ti ti-edit"></i>
+                                            </a>
+                                            <a href="{{ route('admin.invoices.download', $invoice->id) }}" class="btn btn-sm btn-outline-primary" title="Download PDF">
+                                                <i class="ti ti-download"></i>
                                             </a>
                                             <button class="btn btn-sm btn-danger" onclick="deleteInvoice({{ $invoice->id }}, '{{ $invoice->invoice_no }}')">
                                                 <i class="ti ti-trash"></i>
@@ -343,6 +382,9 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="modal-download-btn" class="btn btn-outline-primary" onclick="downloadInvoice(currentInvoiceId)">
+                    <i class="ti ti-download me-1"></i>Download PDF
+                </button>
             </div>
         </div>
     </div>

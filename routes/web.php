@@ -11,6 +11,8 @@ use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SalaryController;
+use App\Http\Controllers\CreditNoteController;
+use App\Http\Controllers\RMAFormController;
 
 // Main Page Route
 
@@ -52,6 +54,24 @@ Route::middleware(['admin.auth'])->group(function () {
     
     // Salary download route
     Route::get('/admin/salaries/{salary}/download', [SalaryController::class, 'download'])->name('admin.salaries.download');
+
+    // Credit Note routes
+    Route::resource('admin/credit-notes', CreditNoteController::class)->names([
+        'index' => 'admin.credit-notes.index',
+        'create' => 'admin.credit-notes.create',
+        'store' => 'admin.credit-notes.store',
+        'show' => 'admin.credit-notes.show',
+        'edit' => 'admin.credit-notes.edit',
+        'update' => 'admin.credit-notes.update',
+        'destroy' => 'admin.credit-notes.destroy',
+    ]);
+    
+    // Credit Note download route
+    Route::get('/admin/credit-notes/{creditNote}/download', [CreditNoteController::class, 'download'])->name('admin.credit-notes.download');
+
+    // RMA Form routes
+    Route::get('/rma-form', [RMAFormController::class, 'index'])->name('rma.index');
+    Route::get('/rma-form/download', [RMAFormController::class, 'download'])->name('rma.download');
 });
 
 Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');

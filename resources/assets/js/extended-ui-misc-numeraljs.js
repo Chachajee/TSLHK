@@ -20,7 +20,7 @@
     fNum.innerHTML = numeral(1230974).format('0.0a');
   }
   if (fCurrency) {
-    fCurrency.innerHTML = numeral(1000.234).format('$0,0.000');
+    fCurrency.innerHTML = numeral(1000.234).format('₹0,0.000');
   }
   if (fBytes) {
     fBytes.innerHTML = numeral(3467479682787).format('0.000ib');

@@ -10,7 +10,6 @@
       "name": "Invoice Generator",
       "icon": "menu-icon tf-icons ti ti-file-invoice",
       "slug": "invoice-generator",
-      "url": "/admin/invoices/*",
       "submenu": [
         {
           "url": "/admin/invoices",
@@ -23,12 +22,6 @@
           "name": "Create Invoice",
           "icon": "menu-icon tf-icons ti ti-plus",
           "slug": "invoice-create"
-        },
-        {
-          "url": "/admin/invoice-parties",
-          "name": "Invoice Parties",
-          "icon": "menu-icon tf-icons ti ti-users",
-          "slug": "invoice-parties"
         }
       ]
     },

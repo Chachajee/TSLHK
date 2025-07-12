@@ -13,11 +13,13 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\CreditNoteController;
 use App\Http\Controllers\RMAFormController;
+use App\Http\Controllers\DashboardController;
 
 // Main Page Route
+// Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::middleware(['admin.auth'])->group(function () {
-    Route::get('/admin/dashboard', [HomePage::class, 'index'])->name('pages-home');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/page-2', [Page2::class, 'index'])->name('pages-page-2');
 
     // locale

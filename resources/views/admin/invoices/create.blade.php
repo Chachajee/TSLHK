@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Badge color
         const badge = document.getElementById('balance-badge');
         badge.className = 'badge rounded-pill ' + (balanceDue > 0 ? 'bg-danger' : 'bg-success');
-        badge.textContent = '$' + balanceDue.toFixed(2);
+                    badge.textContent = '₹' + balanceDue.toFixed(2);
     }
     document.getElementById('add-item-row').addEventListener('click', () => addItemRow(true));
     document.addEventListener('click', function(e) {
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="mb-3">
                             <label for="balance_due" class="form-label">Balance Due</label>
-                            <span id="balance-badge" class="badge rounded-pill bg-danger ms-2">$0.00</span>
+                            <span id="balance-badge" class="badge rounded-pill bg-danger ms-2">₹0.00</span>
                             <input type="hidden" id="balance_due" name="balance_due">
                         </div>
                     </div>

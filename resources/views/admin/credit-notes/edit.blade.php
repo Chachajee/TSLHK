@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const amountSpent = parseFloat(amountSpentInput.getRawValue()) || 0;
         const creditBalance = amountPaid - amountSpent;
         
-        document.getElementById('credit_balance_display').textContent = '$' + creditBalance.toFixed(2);
+                    document.getElementById('credit_balance_display').textContent = '₹' + creditBalance.toFixed(2);
         document.getElementById('credit_balance').value = creditBalance.toFixed(2);
         
         // Update color based on balance
@@ -189,9 +189,9 @@ function updateSummary() {
     const amountSpent = parseFloat(document.getElementById('amount_spent').value.replace(/[^0-9.-]+/g, '')) || 0;
     const creditBalance = amountPaid - amountSpent;
     
-    document.getElementById('summary-amount-paid').textContent = '$' + amountPaid.toFixed(2);
-    document.getElementById('summary-amount-spent').textContent = '$' + amountSpent.toFixed(2);
-    document.getElementById('summary-credit-balance').textContent = '$' + creditBalance.toFixed(2);
+                document.getElementById('summary-amount-paid').textContent = '₹' + amountPaid.toFixed(2);
+            document.getElementById('summary-amount-spent').textContent = '₹' + amountSpent.toFixed(2);
+            document.getElementById('summary-credit-balance').textContent = '₹' + creditBalance.toFixed(2);
 }
 
 // Add event listeners for summary updates

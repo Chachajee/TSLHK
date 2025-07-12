@@ -120,16 +120,16 @@
         <div class="summary">
             <div class="summary-row">
                 <span><strong>Amount Paid:</strong></span>
-                <span class="amount-positive">${{ number_format($creditNote->amount_paid, 2) }}</span>
+                <span class="amount-positive">₹{{ number_format($creditNote->amount_paid, 2) }}</span>
             </div>
             <div class="summary-row">
                 <span><strong>Amount Spent:</strong></span>
-                <span class="amount-negative">${{ number_format($creditNote->amount_spent, 2) }}</span>
+                <span class="amount-negative">₹{{ number_format($creditNote->amount_spent, 2) }}</span>
             </div>
             <div class="summary-row total-row">
                 <span><strong>Credit Balance:</strong></span>
                 <span class="{{ $creditNote->credit_balance > 0 ? 'amount-positive' : ($creditNote->credit_balance < 0 ? 'amount-negative' : 'amount-neutral') }}">
-                    ${{ number_format($creditNote->credit_balance, 2) }}
+                    ₹{{ number_format($creditNote->credit_balance, 2) }}
                 </span>
             </div>
         </div>

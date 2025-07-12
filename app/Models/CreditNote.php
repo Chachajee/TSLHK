@@ -36,7 +36,7 @@ class CreditNote extends Model
      */
     public function getFormattedAmountPaidAttribute()
     {
-        return '$' . number_format($this->amount_paid, 2);
+        return '₹' . number_format($this->amount_paid, 2);
     }
 
     /**
@@ -44,7 +44,7 @@ class CreditNote extends Model
      */
     public function getFormattedAmountSpentAttribute()
     {
-        return '$' . number_format($this->amount_spent, 2);
+        return '₹' . number_format($this->amount_spent, 2);
     }
 
     /**
@@ -52,6 +52,6 @@ class CreditNote extends Model
      */
     public function getFormattedCreditBalanceAttribute()
     {
-        return '$' . number_format($this->credit_balance, 2);
+        return '₹' . number_format($this->credit_balance, 2);
     }
 }

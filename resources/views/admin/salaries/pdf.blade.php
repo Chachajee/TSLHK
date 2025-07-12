@@ -137,7 +137,7 @@
                 @forelse($salary->payments as $payment)
                 <tr>
                     <td>{{ $payment->payment_method }}</td>
-                    <td class="text-right">${{ number_format($payment->amount, 2) }}</td>
+                    <td class="text-right">₹{{ number_format($payment->amount, 2) }}</td>
                     <td class="text-center">{{ $payment->received_date->format('M d, Y') }}</td>
                 </tr>
                 @empty
@@ -165,7 +165,7 @@
                 <tr>
                     <td>{{ $deduction->deduction_type }}</td>
                     <td>{{ $deduction->description }}</td>
-                    <td class="text-right">${{ number_format($deduction->amount, 2) }}</td>
+                    <td class="text-right">₹{{ number_format($deduction->amount, 2) }}</td>
                 </tr>
                 @endforeach
             </tbody>
@@ -176,15 +176,15 @@
     <div class="summary">
         <div class="summary-row">
             <span><strong>Total Paid:</strong></span>
-            <span><strong>${{ number_format($salary->total_paid, 2) }}</strong></span>
+            <span><strong>₹{{ number_format($salary->total_paid, 2) }}</strong></span>
         </div>
         <div class="summary-row">
             <span><strong>Total Deductions:</strong></span>
-            <span><strong>${{ number_format($salary->total_deductions, 2) }}</strong></span>
+            <span><strong>₹{{ number_format($salary->total_deductions, 2) }}</strong></span>
         </div>
         <div class="summary-row total-row">
             <span><strong>Net Salary:</strong></span>
-            <span><strong>${{ number_format($salary->net_salary, 2) }}</strong></span>
+            <span><strong>₹{{ number_format($salary->net_salary, 2) }}</strong></span>
         </div>
     </div>
 

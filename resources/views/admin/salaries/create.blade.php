@@ -141,9 +141,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Update display
-        document.getElementById('total-paid').textContent = '$' + totalPaid.toFixed(2);
-        document.getElementById('total-deductions').textContent = '$' + totalDeductions.toFixed(2);
-        document.getElementById('net-salary').textContent = '$' + (totalPaid - totalDeductions).toFixed(2);
+                    document.getElementById('total-paid').textContent = '₹' + totalPaid.toFixed(2);
+            document.getElementById('total-deductions').textContent = '₹' + totalDeductions.toFixed(2);
+            document.getElementById('net-salary').textContent = '₹' + (totalPaid - totalDeductions).toFixed(2);
     };
 
     // Add initial payment row
@@ -251,13 +251,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <h6 class="card-title">Summary</h6>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <strong>Total Paid:</strong> <span id="total-paid" class="text-success">$0.00</span>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <strong>Total Deductions:</strong> <span id="total-deductions" class="text-warning">$0.00</span>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <strong>Net Salary:</strong> <span id="net-salary" class="text-primary">$0.00</span>
+                                                                    <strong>Total Paid:</strong> <span id="total-paid" class="text-success">₹0.00</span>
+                </div>
+                <div class="col-md-4">
+                    <strong>Total Deductions:</strong> <span id="total-deductions" class="text-warning">₹0.00</span>
+                </div>
+                <div class="col-md-4">
+                    <strong>Net Salary:</strong> <span id="net-salary" class="text-primary">₹0.00</span>
                                             </div>
                                         </div>
                                     </div>

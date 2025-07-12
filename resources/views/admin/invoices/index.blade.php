@@ -62,11 +62,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('modal-invoice-date').textContent = invoice.invoice_date ? new Date(invoice.invoice_date).toLocaleDateString() : 'N/A';
                     document.getElementById('modal-ship-via').textContent = invoice.ship_via || 'N/A';
                     document.getElementById('modal-tracking-no').textContent = invoice.tracking_no || 'N/A';
-                    document.getElementById('modal-subtotal').innerHTML = `<span class='badge bg-light text-dark'>$${parseFloat(invoice.subtotal || 0).toFixed(2)}</span>`;
-                    document.getElementById('modal-shipping').innerHTML = `<span class='badge bg-light text-dark'>$${parseFloat(invoice.shipping || 0).toFixed(2)}</span>`;
-                    document.getElementById('modal-total').innerHTML = `<span class='badge bg-primary'>$${parseFloat(invoice.total || 0).toFixed(2)}</span>`;
-                    document.getElementById('modal-paid').innerHTML = `<span class='badge bg-success'>$${parseFloat(invoice.paid || 0).toFixed(2)}</span>`;
-                    document.getElementById('modal-balance-due').innerHTML = `<span class='badge bg-${invoice.balance_due > 0 ? 'warning' : 'success'}'>$${parseFloat(invoice.balance_due || 0).toFixed(2)}</span>`;
+                                    document.getElementById('modal-subtotal').innerHTML = `<span class='badge bg-light text-dark'>₹${parseFloat(invoice.subtotal || 0).toFixed(2)}</span>`;
+                document.getElementById('modal-shipping').innerHTML = `<span class='badge bg-light text-dark'>₹${parseFloat(invoice.shipping || 0).toFixed(2)}</span>`;
+                document.getElementById('modal-total').innerHTML = `<span class='badge bg-primary'>₹${parseFloat(invoice.total || 0).toFixed(2)}</span>`;
+                document.getElementById('modal-paid').innerHTML = `<span class='badge bg-success'>₹${parseFloat(invoice.paid || 0).toFixed(2)}</span>`;
+                document.getElementById('modal-balance-due').innerHTML = `<span class='badge bg-${invoice.balance_due > 0 ? 'warning' : 'success'}'>₹${parseFloat(invoice.balance_due || 0).toFixed(2)}</span>`;
                     document.getElementById('modal-notes').textContent = invoice.notes || 'No notes';
 
                     // Bill To
@@ -225,13 +225,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <td>{{ $invoice->invoice_no }}</td>
                                     <td>{{ $invoice->invoice_date->format('M d, Y') }}</td>
                                     <td>{{ $invoice->billTo->company_name ?? 'N/A' }}</td>
-                                    <td>${{ number_format($invoice->total, 2) }}</td>
-                                    <td>${{ number_format($invoice->paid, 2) }}</td>
-                                    <td>
-                                        <span class="badge bg-{{ $invoice->balance_due > 0 ? 'warning' : 'success' }}">
-                                            ${{ number_format($invoice->balance_due, 2) }}
-                                        </span>
-                                    </td>
+                                                            <td>₹{{ number_format($invoice->total, 2) }}</td>
+                        <td>₹{{ number_format($invoice->paid, 2) }}</td>
+                        <td>
+                            <span class="badge bg-{{ $invoice->balance_due > 0 ? 'warning' : 'success' }}">
+                                ₹{{ number_format($invoice->balance_due, 2) }}
+                            </span>
+                        </td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <button class="btn btn-sm btn-info" onclick="viewInvoice({{ $invoice->id }})">

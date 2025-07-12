@@ -534,8 +534,8 @@
                             <tr>
                                 <td>{{ $item->description ?? 'N/A' }}</td>
                                 <td class="text-center">{{ $item->quantity ?? 0 }}</td>
-                                <td class="text-right">${{ number_format($item->rate ?? 0, 2) }}</td>
-                                <td class="text-right amount">${{ number_format($item->amount ?? 0, 2) }}</td>
+                                                    <td class="text-right">₹{{ number_format($item->rate ?? 0, 2) }}</td>
+                    <td class="text-right amount">₹{{ number_format($item->amount ?? 0, 2) }}</td>
                             </tr>
                         @endforeach
                     @else
@@ -552,23 +552,23 @@
             <table class="totals-table">
                 <tr>
                     <td class="label">Subtotal:</td>
-                    <td class="value">${{ number_format($invoice->subtotal ?? 0, 2) }}</td>
+                    <td class="value">₹{{ number_format($invoice->subtotal ?? 0, 2) }}</td>
                 </tr>
                 <tr class="subtotal-row">
                     <td class="label">Shipping:</td>
-                    <td class="value">${{ number_format($invoice->shipping ?? 0, 2) }}</td>
+                    <td class="value">₹{{ number_format($invoice->shipping ?? 0, 2) }}</td>
                 </tr>
                 <tr class="total-row">
                     <td class="label">Total:</td>
-                    <td class="value">${{ number_format($invoice->total ?? 0, 2) }}</td>
+                    <td class="value">₹{{ number_format($invoice->total ?? 0, 2) }}</td>
                 </tr>
                 <tr>
                     <td class="label">Paid:</td>
-                    <td class="value">${{ number_format($invoice->paid ?? 0, 2) }}</td>
+                    <td class="value">₹{{ number_format($invoice->paid ?? 0, 2) }}</td>
                 </tr>
                 <tr class="{{ $invoice->balance_due > 0 ? 'balance-row' : 'total-row' }}">
                     <td class="label">Balance Due:</td>
-                    <td class="value">${{ number_format($invoice->balance_due ?? 0, 2) }}</td>
+                    <td class="value">₹{{ number_format($invoice->balance_due ?? 0, 2) }}</td>
                 </tr>
             </table>
         </div>

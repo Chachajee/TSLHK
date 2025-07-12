@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('modal-generated-date').textContent = salary.generated_date ? new Date(salary.generated_date).toLocaleDateString() : 'N/A';
                     
                     // Financial Summary
-                    document.getElementById('modal-total-paid').innerHTML = `<span class='badge bg-success'>$${parseFloat(data.total_paid || 0).toFixed(2)}</span>`;
-                    document.getElementById('modal-total-deductions').innerHTML = `<span class='badge bg-warning'>$${parseFloat(data.total_deductions || 0).toFixed(2)}</span>`;
-                    document.getElementById('modal-net-salary').innerHTML = `<span class='badge bg-primary'>$${parseFloat(data.net_salary || 0).toFixed(2)}</span>`;
+                                    document.getElementById('modal-total-paid').innerHTML = `<span class='badge bg-success'>₹${parseFloat(data.total_paid || 0).toFixed(2)}</span>`;
+                document.getElementById('modal-total-deductions').innerHTML = `<span class='badge bg-warning'>₹${parseFloat(data.total_deductions || 0).toFixed(2)}</span>`;
+                document.getElementById('modal-net-salary').innerHTML = `<span class='badge bg-primary'>₹${parseFloat(data.net_salary || 0).toFixed(2)}</span>`;
 
                     // Salary Payments
                     const paymentsTable = document.getElementById('modal-payments-table');
@@ -222,17 +222,17 @@ document.addEventListener('DOMContentLoaded', function() {
                                     <td>{{ $salary->period }}</td>
                                     <td>
                                         <span class="badge bg-success">
-                                            ${{ number_format($salary->total_paid, 2) }}
+                                            ₹{{ number_format($salary->total_paid, 2) }}
                                         </span>
                                     </td>
                                     <td>
                                         <span class="badge bg-warning">
-                                            ${{ number_format($salary->total_deductions, 2) }}
+                                            ₹{{ number_format($salary->total_deductions, 2) }}
                                         </span>
                                     </td>
                                     <td>
                                         <span class="badge bg-primary">
-                                            ${{ number_format($salary->net_salary, 2) }}
+                                            ₹{{ number_format($salary->net_salary, 2) }}
                                         </span>
                                     </td>
                                     <td>

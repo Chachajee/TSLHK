@@ -6,7 +6,7 @@ use App\Models\CreditNote;
 use App\Http\Requests\StoreCreditNoteRequest;
 use App\Http\Requests\UpdateCreditNoteRequest;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\Snappy\Facades\SnappyPdf;
 
 class CreditNoteController extends Controller
 {
@@ -70,8 +70,6 @@ class CreditNoteController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            \Log::error('Error loading credit note details: ' . $e->getMessage());
-
             return response()->json([
                 'success' => false,
                 'message' => 'Error loading credit note details: ' . $e->getMessage()
@@ -139,7 +137,11 @@ class CreditNoteController extends Controller
     public function download(CreditNote $creditNote)
     {
         try {
-            $pdf = PDF::loadView('admin.credit-notes.pdf', compact('creditNote'));
+            $pdf = SnappyPdf::loadView('admin.credit-notes.pdf', compact('creditNote'));
+            
+            // Set paper size and orientation
+            $pdf->setOption('page-size', 'A4');
+            $pdf->setOption('orientation', 'portrait');
             
             return $pdf->download('credit-note-' . $creditNote->id . '-' . $creditNote->customer_name . '.pdf');
         } catch (\Exception $e) {

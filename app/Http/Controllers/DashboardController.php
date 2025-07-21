@@ -11,11 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Fetch counts from the database
-        $invoiceCount = Invoice::count();
-        $salaryCount = SalarySlip::count();
-        $creditNoteCount = CreditNote::count();
+        dd('Dashboard index method called');
         
-        return view('dashboard', compact('invoiceCount', 'salaryCount', 'creditNoteCount'));
     }
-} 
+}

@@ -16,10 +16,10 @@ use App\Http\Controllers\RMAFormController;
 use App\Http\Controllers\DashboardController;
 
 // Main Page Route
-// Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
 Route::middleware(['admin.auth'])->group(function () {
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/page-2', [Page2::class, 'index'])->name('pages-page-2');
 
     // locale
@@ -39,7 +39,7 @@ Route::middleware(['admin.auth'])->group(function () {
         'update' => 'admin.invoices.update',
         'destroy' => 'admin.invoices.destroy',
     ]);
-    
+
     // Invoice download route
     Route::get('/admin/invoices/{invoice}/download', [InvoiceController::class, 'download'])->name('admin.invoices.download');
 
@@ -53,7 +53,7 @@ Route::middleware(['admin.auth'])->group(function () {
         'update' => 'admin.salaries.update',
         'destroy' => 'admin.salaries.destroy',
     ]);
-    
+
     // Salary download route
     Route::get('/admin/salaries/{salary}/download', [SalaryController::class, 'download'])->name('admin.salaries.download');
 
@@ -67,7 +67,7 @@ Route::middleware(['admin.auth'])->group(function () {
         'update' => 'admin.credit-notes.update',
         'destroy' => 'admin.credit-notes.destroy',
     ]);
-    
+
     // Credit Note download route
     Route::get('/admin/credit-notes/{creditNote}/download', [CreditNoteController::class, 'download'])->name('admin.credit-notes.download');
 

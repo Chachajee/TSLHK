@@ -21,7 +21,7 @@ class AdminAuthMiddleware
 
         if ($isAdmin && $isLoginRoute) {
             // Already admin, trying to access login: redirect to dashboard
-            return redirect('/admin/dashboard');
+            return redirect('/admin');
         }
 
         return $next($request);

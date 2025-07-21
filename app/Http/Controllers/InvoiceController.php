@@ -10,7 +10,7 @@ use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\Snappy\Facades\SnappyPdf;
 
 class InvoiceController extends Controller
 {
@@ -140,8 +140,6 @@ class InvoiceController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            \Log::error('Error loading invoice details: ' . $e->getMessage());
-
             return response()->json([
                 'success' => false,
                 'message' => 'Error loading invoice details: ' . $e->getMessage()
@@ -272,18 +270,17 @@ class InvoiceController extends Controller
                 'paymentInstructions' => $invoice->paymentInstructions,
             ];
 
-            // Generate PDF
-            $pdf = Pdf::loadView('admin.invoices.pdf', $data);
+            // Generate PDF using Snappy
+            $pdf = SnappyPdf::loadView('admin.invoices.pdf', $data);
             
             // Set paper size and orientation
-            $pdf->setPaper('a4', 'portrait');
+            $pdf->setOption('page-size', 'A4');
+            $pdf->setOption('orientation', 'portrait');
             
             // Download the PDF with a descriptive filename
             return $pdf->download("Invoice_{$invoice->invoice_no}.pdf");
 
         } catch (\Exception $e) {
-            \Log::error('Error generating PDF: ' . $e->getMessage());
-            
             return back()->with('error', 'Error generating PDF: ' . $e->getMessage());
         }
     }

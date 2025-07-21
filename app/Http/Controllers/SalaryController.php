@@ -9,7 +9,7 @@ use App\Http\Requests\StoreSalarySlipRequest;
 use App\Http\Requests\UpdateSalarySlipRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade\Pdf;
+use Barryvdh\Snappy\Facades\SnappyPdf;
 
 class SalaryController extends Controller
 {
@@ -113,8 +113,6 @@ class SalaryController extends Controller
             ]);
 
         } catch (\Exception $e) {
-            \Log::error('Error loading salary slip details: ' . $e->getMessage());
-
             return response()->json([
                 'success' => false,
                 'message' => 'Error loading salary slip details: ' . $e->getMessage()
@@ -214,7 +212,11 @@ class SalaryController extends Controller
         try {
             $salary->load(['payments', 'deductions']);
 
-            $pdf = PDF::loadView('admin.salaries.pdf', compact('salary'));
+            $pdf = SnappyPdf::loadView('admin.salaries.pdf', compact('salary'));
+            
+            // Set paper size and orientation
+            $pdf->setOption('page-size', 'A4');
+            $pdf->setOption('orientation', 'portrait');
             
             return $pdf->download('salary-slip-' . $salary->employee_id_number . '-' . $salary->period_from->format('Y-m') . '.pdf');
         } catch (\Exception $e) {

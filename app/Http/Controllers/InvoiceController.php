@@ -8,9 +8,9 @@ use App\Models\InvoiceParty;
 use App\Models\PaymentInstruction;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
+use App\Services\PdfService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\Snappy\Facades\SnappyPdf;
 
 class InvoiceController extends Controller
 {
@@ -255,31 +255,10 @@ class InvoiceController extends Controller
     /**
      * Download invoice as PDF.
      */
-    public function download(Invoice $invoice)
+    public function download(Invoice $invoice, PdfService $pdfService)
     {
         try {
-            // Load all the relationships
-            $invoice->load(['items', 'billTo', 'shipTo', 'paymentInstructions']);
-
-            // Prepare data for the PDF view
-            $data = [
-                'invoice' => $invoice,
-                'items' => $invoice->items ?? [],
-                'billTo' => $invoice->billTo,
-                'shipTo' => $invoice->shipTo,
-                'paymentInstructions' => $invoice->paymentInstructions,
-            ];
-
-            // Generate PDF using Snappy
-            $pdf = SnappyPdf::loadView('admin.invoices.pdf', $data);
-            
-            // Set paper size and orientation
-            $pdf->setOption('page-size', 'A4');
-            $pdf->setOption('orientation', 'portrait');
-            
-            // Download the PDF with a descriptive filename
-            return $pdf->download("Invoice_{$invoice->invoice_no}.pdf");
-
+            return $pdfService->generateInvoicePdf($invoice);
         } catch (\Exception $e) {
             return back()->with('error', 'Error generating PDF: ' . $e->getMessage());
         }

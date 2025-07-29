@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Routing\Route;
+use App\Models\ContactMessage;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -29,5 +30,11 @@ class MenuServiceProvider extends ServiceProvider
 
     // Share all menuData to all the views
     $this->app->make('view')->share('menuData', [$verticalMenuData, $horizontalMenuData]);
+
+    // Share contact unread count with all views
+    View::composer('*', function ($view) {
+        $contactUnreadCount = ContactMessage::unread()->count();
+        $view->with('contactUnreadCount', $contactUnreadCount);
+    });
   }
 }

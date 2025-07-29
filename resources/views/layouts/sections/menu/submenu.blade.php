@@ -40,6 +40,9 @@ use Illuminate\Support\Facades\Route;
           @isset($submenu->badge)
             <div class="badge bg-{{ $submenu->badge[0] }} rounded-pill ms-auto">{{ $submenu->badge[1] }}</div>
           @endisset
+          @if($submenu->slug === 'admin.contact-messages.index' && isset($contactUnreadCount) && $contactUnreadCount > 0)
+            <div class="badge bg-danger rounded-pill ms-auto">{{ $contactUnreadCount }}</div>
+          @endif
         </a>
 
         {{-- submenu --}}

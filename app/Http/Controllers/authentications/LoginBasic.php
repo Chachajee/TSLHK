@@ -32,7 +32,7 @@ class LoginBasic extends Controller
       $user = Auth::user();
       if ($user->email === 'admin@gmail.com') {
         Session::put('is_admin', true);
-        return redirect('/admin/dashboard');
+        return redirect('/admin');
       } else {
         Auth::logout();
         return back()->withErrors(['email-username' => 'Only admin can login here'])->withInput();

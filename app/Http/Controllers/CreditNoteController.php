@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CreditNote;
 use App\Http\Requests\StoreCreditNoteRequest;
 use App\Http\Requests\UpdateCreditNoteRequest;
+use App\Services\PdfService;
 use Illuminate\Http\Request;
-use Barryvdh\Snappy\Facades\SnappyPdf;
 
 class CreditNoteController extends Controller
 {
@@ -134,16 +134,10 @@ class CreditNoteController extends Controller
     /**
      * Download credit note as PDF.
      */
-    public function download(CreditNote $creditNote)
+    public function download(CreditNote $creditNote, PdfService $pdfService)
     {
         try {
-            $pdf = SnappyPdf::loadView('admin.credit-notes.pdf', compact('creditNote'));
-            
-            // Set paper size and orientation
-            $pdf->setOption('page-size', 'A4');
-            $pdf->setOption('orientation', 'portrait');
-            
-            return $pdf->download('credit-note-' . $creditNote->id . '-' . $creditNote->customer_name . '.pdf');
+            return $pdfService->generateCreditNotePdf($creditNote);
         } catch (\Exception $e) {
             return back()->with('error', 'Error generating PDF: ' . $e->getMessage());
         }

@@ -75,6 +75,19 @@
           "slug": "rma.index"
         }
       ]
+    },
+    {
+      "name": "Contact Management",
+      "icon": "menu-icon tf-icons ti ti-message-circle",
+      "slug": "contact-management",
+      "submenu": [
+        {
+          "url": "/admin/contact-messages",
+          "name": "Contact Messages",
+          "icon": "menu-icon tf-icons ti ti-inbox",
+          "slug": "admin.contact-messages.index"
+        }
+      ]
     }
   ]
 }

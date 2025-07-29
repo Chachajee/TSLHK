@@ -14,9 +14,16 @@ use App\Http\Controllers\SalaryController;
 use App\Http\Controllers\CreditNoteController;
 use App\Http\Controllers\RMAFormController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\AdminContactController;
 
 // Main Page Route
-Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/', [DashboardController::class, 'home'])->name('dashboard');
+
+// Frontend Routes
+Route::get('/portfolio-details', [FrontendController::class, 'portfolioDetails'])->name('portfolio.details');
+Route::get('/service-details', [FrontendController::class, 'serviceDetails'])->name('service.details');
+Route::post('/contact-message', [FrontendController::class, 'storeContactMessage'])->name('contact.message.store');
 
 Route::middleware(['admin.auth'])->group(function () {
     Route::get('/admin', [DashboardController::class, 'index'])->name('dashboard');
@@ -74,6 +81,15 @@ Route::middleware(['admin.auth'])->group(function () {
     // RMA Form routes
     Route::get('/rma-form', [RMAFormController::class, 'index'])->name('rma.index');
     Route::get('/rma-form/download', [RMAFormController::class, 'download'])->name('rma.download');
+
+    // Contact Messages routes
+    Route::resource('admin/contact-messages', AdminContactController::class)->names([
+        'index' => 'admin.contact-messages.index',
+        'show' => 'admin.contact-messages.show',
+        'destroy' => 'admin.contact-messages.destroy',
+    ]);
+    Route::patch('/admin/contact-messages/{contactMessage}/mark-read', [AdminContactController::class, 'markAsRead'])->name('admin.contact-messages.mark-read');
+    Route::patch('/admin/contact-messages/{contactMessage}/mark-replied', [AdminContactController::class, 'markAsReplied'])->name('admin.contact-messages.mark-replied');
 });
 
 Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');

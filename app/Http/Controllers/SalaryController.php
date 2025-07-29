@@ -7,9 +7,9 @@ use App\Models\SalaryPayment;
 use App\Models\SalaryDeduction;
 use App\Http\Requests\StoreSalarySlipRequest;
 use App\Http\Requests\UpdateSalarySlipRequest;
+use App\Services\PdfService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\Snappy\Facades\SnappyPdf;
 
 class SalaryController extends Controller
 {
@@ -207,18 +207,10 @@ class SalaryController extends Controller
     /**
      * Download salary slip as PDF.
      */
-    public function download(SalarySlip $salary)
+    public function download(SalarySlip $salary, PdfService $pdfService)
     {
         try {
-            $salary->load(['payments', 'deductions']);
-
-            $pdf = SnappyPdf::loadView('admin.salaries.pdf', compact('salary'));
-            
-            // Set paper size and orientation
-            $pdf->setOption('page-size', 'A4');
-            $pdf->setOption('orientation', 'portrait');
-            
-            return $pdf->download('salary-slip-' . $salary->employee_id_number . '-' . $salary->period_from->format('Y-m') . '.pdf');
+            return $pdfService->generateSalaryPdf($salary);
         } catch (\Exception $e) {
             return back()->with('error', 'Error generating PDF: ' . $e->getMessage());
         }

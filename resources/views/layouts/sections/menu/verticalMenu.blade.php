@@ -68,6 +68,9 @@ $configData = Helper::appClasses();
           @isset($menu->badge)
             <div class="badge bg-{{ $menu->badge[0] }} rounded-pill ms-auto">{{ $menu->badge[1] }}</div>
           @endisset
+          @if($menu->slug === 'admin.contact-messages.index' && isset($contactUnreadCount) && $contactUnreadCount > 0)
+            <div class="badge bg-danger rounded-pill ms-auto">{{ $contactUnreadCount }}</div>
+          @endif
         </a>
 
         {{-- submenu --}}

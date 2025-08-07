@@ -3,197 +3,198 @@
 @section('title', 'Create Credit Note')
 
 @section('vendor-style')
-@vite([
-  'resources/assets/vendor/libs/cleavejs/cleave.scss'
-])
+    @vite([
+        'resources/assets/vendor/libs/cleavejs/cleave.scss'
+    ])
 @endsection
 
 @section('vendor-script')
-@vite([
-  'resources/assets/vendor/libs/cleavejs/cleave.js'
-])
+    @vite([
+        'resources/assets/vendor/libs/cleavejs/cleave.js'
+    ])
 @endsection
 
 @section('page-script')
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Cleave.js for number formatting
-    const amountPaidInput = new Cleave('#amount_paid', {
-        numeral: true,
-        numeralDecimalScale: 2,
-        numeralPositiveOnly: true,
-        prefix: '₹'
-    });
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Cleave.js for number formatting - CONSISTENT CURRENCY SYMBOL
+            const amountPaidInput = new Cleave('#amount_paid', {
+                numeral: true,
+                numeralDecimalScale: 2,
+                numeralPositiveOnly: true,
+                prefix: '₹' // Fixed: Use consistent rupee symbol
+            });
 
-    const amountSpentInput = new Cleave('#amount_spent', {
-        numeral: true,
-        numeralDecimalScale: 2,
-        numeralPositiveOnly: true,
-        prefix: '₹'
-    });
+            const amountSpentInput = new Cleave('#amount_spent', {
+                numeral: true,
+                numeralDecimalScale: 2,
+                numeralPositiveOnly: true,
+                prefix: '₹' // Fixed: Use consistent rupee symbol
+            });
 
-    // Auto-calculate credit balance
-    function calculateCreditBalance() {
-        const amountPaid = parseFloat(amountPaidInput.getRawValue()) || 0;
-        const amountSpent = parseFloat(amountSpentInput.getRawValue()) || 0;
-        const creditBalance = amountPaid - amountSpent;
-        
-                    document.getElementById('credit_balance_display').textContent = '₹' + creditBalance.toFixed(2);
-        document.getElementById('credit_balance').value = creditBalance.toFixed(2);
-        
-        // Update color based on balance
-        const displayElement = document.getElementById('credit_balance_display');
-        if (creditBalance > 0) {
-            displayElement.className = 'form-control-plaintext text-success fw-bold';
-        } else if (creditBalance < 0) {
-            displayElement.className = 'form-control-plaintext text-danger fw-bold';
-        } else {
-            displayElement.className = 'form-control-plaintext text-muted fw-bold';
-        }
-    }
+            // Auto-calculate credit balance
+            function calculateCreditBalance() {
+                const amountPaid = parseFloat(amountPaidInput.getRawValue()) || 0;
+                const amountSpent = parseFloat(amountSpentInput.getRawValue()) || 0;
+                const creditBalance = amountPaid - amountSpent;
 
-    // Add event listeners for auto-calculation
-    document.getElementById('amount_paid').addEventListener('input', calculateCreditBalance);
-    document.getElementById('amount_spent').addEventListener('input', calculateCreditBalance);
+                document.getElementById('credit_balance_display').textContent = '₹' + creditBalance.toFixed(2);
+                document.getElementById('credit_balance').value = creditBalance.toFixed(2);
 
-    // Initial calculation
-    calculateCreditBalance();
-});
-</script>
+                // Update color based on balance
+                const displayElement = document.getElementById('credit_balance_display');
+                if (creditBalance > 0) {
+                    displayElement.className = 'form-control-plaintext text-success fw-bold';
+                } else if (creditBalance < 0) {
+                    displayElement.className = 'form-control-plaintext text-danger fw-bold';
+                } else {
+                    displayElement.className = 'form-control-plaintext text-muted fw-bold';
+                }
+
+                // Update summary as well
+                updateSummary();
+            }
+
+            // Update summary display
+            function updateSummary() {
+                const amountPaid = parseFloat(amountPaidInput.getRawValue()) || 0;
+                const amountSpent = parseFloat(amountSpentInput.getRawValue()) || 0;
+                const creditBalance = amountPaid - amountSpent;
+
+                document.getElementById('summary-amount-paid').textContent = '₹' + amountPaid.toFixed(2);
+                document.getElementById('summary-amount-spent').textContent = '₹' + amountSpent.toFixed(2);
+                document.getElementById('summary-credit-balance').textContent = '₹' + creditBalance.toFixed(2);
+            }
+
+            // Add event listeners for auto-calculation
+            document.getElementById('amount_paid').addEventListener('input', calculateCreditBalance);
+            document.getElementById('amount_spent').addEventListener('input', calculateCreditBalance);
+
+            // Initial calculation
+            calculateCreditBalance();
+        });
+    </script>
 @endsection
 
 @section('content')
-<div class="container-xxl flex-grow-1 container-p-y">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Create Credit Note</h4>
-                </div>
-                <div class="card-body">
-                    @if($errors->any())
-                        <div class="alert alert-danger alert-dismissible" role="alert">
-                            <ul class="mb-0">
-                                @foreach($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endif
-
-                    <form action="{{ route('admin.credit-notes.store') }}" method="POST">
-                        @csrf
-                        
-                        <!-- Customer Information -->
-                        <div class="row mb-4">
-                            <div class="col-12">
-                                <h5 class="mb-3">Customer Information</h5>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Customer Name</label>
-                                <input type="text" name="customer_name" id="customer_name" class="form-control" value="{{ old('customer_name') }}" required>
-                            </div>
-                        </div>
-
-                        <!-- Financial Information -->
-                        <div class="row mb-4">
-                            <div class="col-12">
-                                <h5 class="mb-3">Financial Information</h5>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Amount Paid</label>
-                                <input type="text" name="amount_paid" id="amount_paid" class="form-control" value="{{ old('amount_paid') }}" required>
-                                <div class="form-text">Enter the total amount paid by the customer</div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Amount Spent</label>
-                                <input type="text" name="amount_spent" id="amount_spent" class="form-control" value="{{ old('amount_spent') }}" required>
-                                <div class="form-text">Enter the total amount spent by the customer</div>
-                            </div>
-                        </div>
-
-                        <!-- Credit Balance (Auto-calculated) -->
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <label class="form-label">Credit Balance</label>
-                                <div class="form-control-plaintext fw-bold" id="credit_balance_display">₹0.00</div>
-                                <input type="hidden" name="credit_balance" id="credit_balance" value="0.00">
-                                <div class="form-text">Automatically calculated (Paid - Spent)</div>
-                            </div>
-                        </div>
-
-                        <!-- Notes -->
-                        <div class="row mb-4">
-                            <div class="col-12">
-                                <h5 class="mb-3">Additional Information</h5>
-                            </div>
-                            <div class="col-12">
-                                <label class="form-label">Notes (Optional)</label>
-                                <textarea name="notes" id="notes" class="form-control" rows="4" placeholder="Enter any additional notes or comments...">{{ old('notes') }}</textarea>
-                                <div class="form-text">Optional notes about this credit note</div>
-                            </div>
-                        </div>
-
-                        <!-- Summary Card -->
-                        <div class="row mb-4">
-                            <div class="col-12">
-                                <div class="card bg-light">
-                                    <div class="card-body">
-                                        <h6 class="card-title">Summary</h6>
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                                        <strong>Amount Paid:</strong> <span id="summary-amount-paid" class="text-success">₹0.00</span>
+    <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Create Credit Note</h4>
                     </div>
-                    <div class="col-md-4">
-                        <strong>Amount Spent:</strong> <span id="summary-amount-spent" class="text-warning">₹0.00</span>
-                    </div>
-                    <div class="col-md-4">
-                        <strong>Credit Balance:</strong> <span id="summary-credit-balance" class="text-primary">₹0.00</span>
+                    <div class="card-body">
+                        @if($errors->any())
+                            <div class="alert alert-danger alert-dismissible" role="alert">
+                                <ul class="mb-0">
+                                    @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        <form action="{{ route('admin.credit-notes.store') }}" method="POST">
+                            @csrf
+
+                            <!-- Customer Information -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="mb-3">Customer Information</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Customer Name</label>
+                                    <input type="text" name="customer_name" id="customer_name" class="form-control"
+                                        value="{{ old('customer_name') }}" required>
+                                </div>
+                            </div>
+
+                            <!-- Financial Information -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="mb-3">Financial Information</h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Amount Paid</label>
+                                    <input type="text" name="amount_paid" id="amount_paid" class="form-control"
+                                        value="{{ old('amount_paid') }}" required>
+                                    <div class="form-text">Enter the total amount paid by the customer</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Amount Spent</label>
+                                    <input type="text" name="amount_spent" id="amount_spent" class="form-control"
+                                        value="{{ old('amount_spent') }}" required>
+                                    <div class="form-text">Enter the total amount spent by the customer</div>
+                                </div>
+                            </div>
+
+                            <!-- Credit Balance (Auto-calculated) -->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">Credit Balance</label>
+                                    <div class="form-control-plaintext fw-bold" id="credit_balance_display">₹0.00</div>
+                                    <input type="hidden" name="credit_balance" id="credit_balance" value="0.00">
+                                    <div class="form-text">Automatically calculated (Paid - Spent)</div>
+                                </div>
+                            </div>
+
+                            <!-- Notes -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <h5 class="mb-3">Additional Information</h5>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Notes (Optional)</label>
+                                    <textarea name="notes" id="notes" class="form-control" rows="4"
+                                        placeholder="Enter any additional notes or comments...">{{ old('notes') }}</textarea>
+                                    <div class="form-text">Optional notes about this credit note</div>
+                                </div>
+                            </div>
+
+                            <!-- Summary Card -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="card bg-light">
+                                        <div class="card-body">
+                                            <h6 class="card-title">Summary</h6>
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <strong>Amount Paid:</strong> <span id="summary-amount-paid"
+                                                        class="text-success">₹0.00</span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <strong>Amount Spent:</strong> <span id="summary-amount-spent"
+                                                        class="text-warning">₹0.00</span>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <strong>Credit Balance:</strong> <span id="summary-credit-balance"
+                                                        class="text-primary">₹0.00</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Submit Buttons -->
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="d-flex gap-2">
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="ti ti-check me-1"></i>Create Credit Note
-                                    </button>
-                                    <a href="{{ route('admin.credit-notes.index') }}" class="btn btn-secondary">
-                                        <i class="ti ti-x me-1"></i>Cancel
-                                    </a>
+                            <!-- Submit Buttons -->
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="d-flex gap-2">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="ti ti-check me-1"></i>Create Credit Note
+                                        </button>
+                                        <a href="{{ route('admin.credit-notes.index') }}" class="btn btn-secondary">
+                                            <i class="ti ti-x me-1"></i>Cancel
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<script>
-// Update summary display
-function updateSummary() {
-    const amountPaid = parseFloat(document.getElementById('amount_paid').value.replace(/[^0-9.-]+/g, '')) || 0;
-    const amountSpent = parseFloat(document.getElementById('amount_spent').value.replace(/[^0-9.-]+/g, '')) || 0;
-    const creditBalance = amountPaid - amountSpent;
-    
-    document.getElementById('summary-amount-paid').textContent = '₹' + amountPaid.toFixed(2);
-    document.getElementById('summary-amount-spent').textContent = '₹' + amountSpent.toFixed(2);
-    document.getElementById('summary-credit-balance').textContent = '₹' + creditBalance.toFixed(2);
-}
-
-// Add event listeners for summary updates
-document.getElementById('amount_paid').addEventListener('input', updateSummary);
-document.getElementById('amount_spent').addEventListener('input', updateSummary);
-
-// Initial summary update
-updateSummary();
-</script>
-@endsection 
+@endsection

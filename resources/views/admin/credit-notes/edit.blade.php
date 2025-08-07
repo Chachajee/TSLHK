@@ -17,19 +17,19 @@
 @section('page-script')
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize Cleave.js for number formatting
+    // Initialize Cleave.js for number formatting - CONSISTENT CURRENCY SYMBOL
     const amountPaidInput = new Cleave('#amount_paid', {
         numeral: true,
         numeralDecimalScale: 2,
         numeralPositiveOnly: true,
-        prefix: '$'
+        prefix: '₹' // Fixed: Use consistent rupee symbol instead of $
     });
 
     const amountSpentInput = new Cleave('#amount_spent', {
         numeral: true,
         numeralDecimalScale: 2,
         numeralPositiveOnly: true,
-        prefix: '$'
+        prefix: '₹' // Fixed: Use consistent rupee symbol instead of $
     });
 
     // Set initial values
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const amountSpent = parseFloat(amountSpentInput.getRawValue()) || 0;
         const creditBalance = amountPaid - amountSpent;
         
-                    document.getElementById('credit_balance_display').textContent = '₹' + creditBalance.toFixed(2);
+        document.getElementById('credit_balance_display').textContent = '₹' + creditBalance.toFixed(2);
         document.getElementById('credit_balance').value = creditBalance.toFixed(2);
         
         // Update color based on balance
@@ -54,6 +54,20 @@ document.addEventListener('DOMContentLoaded', function() {
         } else {
             displayElement.className = 'form-control-plaintext text-muted fw-bold';
         }
+        
+        // Update summary as well
+        updateSummary();
+    }
+
+    // Update summary display
+    function updateSummary() {
+        const amountPaid = parseFloat(amountPaidInput.getRawValue()) || 0;
+        const amountSpent = parseFloat(amountSpentInput.getRawValue()) || 0;
+        const creditBalance = amountPaid - amountSpent;
+        
+        document.getElementById('summary-amount-paid').textContent = '₹' + amountPaid.toFixed(2);
+        document.getElementById('summary-amount-spent').textContent = '₹' + amountSpent.toFixed(2);
+        document.getElementById('summary-credit-balance').textContent = '₹' + creditBalance.toFixed(2);
     }
 
     // Add event listeners for auto-calculation
@@ -122,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="form-label">Credit Balance</label>
-                                <div class="form-control-plaintext fw-bold" id="credit_balance_display">${{ number_format($creditNote->credit_balance, 2) }}</div>
+                                <div class="form-control-plaintext fw-bold" id="credit_balance_display">₹{{ number_format($creditNote->credit_balance, 2) }}</div>
                                 <input type="hidden" name="credit_balance" id="credit_balance" value="{{ $creditNote->credit_balance }}">
                                 <div class="form-text">Automatically calculated (Paid - Spent)</div>
                             </div>
@@ -148,13 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
                                         <h6 class="card-title">Summary</h6>
                                         <div class="row">
                                             <div class="col-md-4">
-                                                <strong>Amount Paid:</strong> <span id="summary-amount-paid" class="text-success">${{ number_format($creditNote->amount_paid, 2) }}</span>
+                                                <strong>Amount Paid:</strong> <span id="summary-amount-paid" class="text-success">₹{{ number_format($creditNote->amount_paid, 2) }}</span>
                                             </div>
                                             <div class="col-md-4">
-                                                <strong>Amount Spent:</strong> <span id="summary-amount-spent" class="text-warning">${{ number_format($creditNote->amount_spent, 2) }}</span>
+                                                <strong>Amount Spent:</strong> <span id="summary-amount-spent" class="text-warning">₹{{ number_format($creditNote->amount_spent, 2) }}</span>
                                             </div>
                                             <div class="col-md-4">
-                                                <strong>Credit Balance:</strong> <span id="summary-credit-balance" class="text-primary">${{ number_format($creditNote->credit_balance, 2) }}</span>
+                                                <strong>Credit Balance:</strong> <span id="summary-credit-balance" class="text-primary">₹{{ number_format($creditNote->credit_balance, 2) }}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -181,24 +195,4 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
-
-<script>
-// Update summary display
-function updateSummary() {
-    const amountPaid = parseFloat(document.getElementById('amount_paid').value.replace(/[^0-9.-]+/g, '')) || 0;
-    const amountSpent = parseFloat(document.getElementById('amount_spent').value.replace(/[^0-9.-]+/g, '')) || 0;
-    const creditBalance = amountPaid - amountSpent;
-    
-                document.getElementById('summary-amount-paid').textContent = '₹' + amountPaid.toFixed(2);
-            document.getElementById('summary-amount-spent').textContent = '₹' + amountSpent.toFixed(2);
-            document.getElementById('summary-credit-balance').textContent = '₹' + creditBalance.toFixed(2);
-}
-
-// Add event listeners for summary updates
-document.getElementById('amount_paid').addEventListener('input', updateSummary);
-document.getElementById('amount_spent').addEventListener('input', updateSummary);
-
-// Initial summary update
-updateSummary();
-</script>
-@endsection 
+@endsection

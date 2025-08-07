@@ -15,9 +15,20 @@ class UpdateCreditNoteRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'amount_paid' => $this->cleanCurrencyValue($this->input('amount_paid')),
+            'amount_spent' => $this->cleanCurrencyValue($this->input('amount_spent')),
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
      */
     public function rules(): array
     {
@@ -25,18 +36,20 @@ class UpdateCreditNoteRequest extends FormRequest
             'customer_name' => 'required|string|max:255',
             'amount_paid' => 'required|numeric|min:0',
             'amount_spent' => 'required|numeric|min:0',
-            'credit_balance' => 'required|numeric',
             'notes' => 'nullable|string|max:1000',
         ];
     }
 
     /**
      * Get custom messages for validator errors.
+     *
+     * @return array
      */
     public function messages(): array
     {
         return [
             'customer_name.required' => 'Customer name is required.',
+            'customer_name.string' => 'Customer name must be a valid text.',
             'customer_name.max' => 'Customer name cannot exceed 255 characters.',
             'amount_paid.required' => 'Amount paid is required.',
             'amount_paid.numeric' => 'Amount paid must be a valid number.',
@@ -44,22 +57,27 @@ class UpdateCreditNoteRequest extends FormRequest
             'amount_spent.required' => 'Amount spent is required.',
             'amount_spent.numeric' => 'Amount spent must be a valid number.',
             'amount_spent.min' => 'Amount spent cannot be negative.',
-            'credit_balance.required' => 'Credit balance is required.',
-            'credit_balance.numeric' => 'Credit balance must be a valid number.',
+            'notes.string' => 'Notes must be valid text.',
             'notes.max' => 'Notes cannot exceed 1000 characters.',
         ];
     }
 
     /**
-     * Prepare the data for validation.
+     * Clean currency value by removing currency symbols and formatting
+     *
+     * @param string|null $value
+     * @return string|null
      */
-    protected function prepareForValidation()
+    private function cleanCurrencyValue($value)
     {
-        // Calculate credit balance if not provided
-        if ($this->has('amount_paid') && $this->has('amount_spent') && !$this->has('credit_balance')) {
-            $this->merge([
-                'credit_balance' => $this->amount_paid - $this->amount_spent
-            ]);
+        if (empty($value)) {
+            return null;
         }
+
+        // Remove currency symbols, commas, and spaces
+        $cleaned = preg_replace('/[₹$,\s]/', '', $value);
+
+        // Return cleaned value or null if empty
+        return $cleaned !== '' ? $cleaned : null;
     }
 }

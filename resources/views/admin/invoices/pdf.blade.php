@@ -14,7 +14,7 @@
 
         body {
             font-family: DejaVu Sans, sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             line-height: 1.6;
             color: #1a202c;
             background: #f7fafc;
@@ -81,30 +81,30 @@
         }
 
         .company-details h1 {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
             margin-bottom: 5px;
         }
 
         .company-tagline {
-            font-size: 12px;
+            font-size: 14px;
             margin-bottom: 8px;
         }
 
         .company-address {
-            font-size: 10px;
+            font-size: 12px;
             line-height: 1.4;
         }
 
         .invoice-title {
-            font-size: 36px;
+            font-size: 42px;
             font-weight: bold;
             margin-bottom: 10px;
             text-transform: uppercase;
         }
 
         .invoice-number {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             margin-bottom: 5px;
             background: rgba(255, 255, 255, 0.2);
@@ -114,7 +114,7 @@
         }
 
         .invoice-date {
-            font-size: 12px;
+            font-size: 14px;
             margin-bottom: 10px;
         }
 
@@ -122,7 +122,7 @@
             display: inline-block;
             padding: 6px 15px;
             border-radius: 15px;
-            font-size: 10px;
+            font-size: 12px;
             font-weight: bold;
             text-transform: uppercase;
         }
@@ -176,7 +176,7 @@
         }
 
         .address-title {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             color: #2d3748;
             margin-bottom: 12px;
@@ -187,20 +187,21 @@
             font-weight: bold;
             color: #1a202c;
             margin-bottom: 8px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .address-details {
             color: #4a5568;
             margin-bottom: 12px;
             line-height: 1.5;
+            font-size: 14px;
         }
 
         .contact-info {
             margin-top: 12px;
             padding-top: 12px;
             border-top: 1px solid #e2e8f0;
-            font-size: 10px;
+            font-size: 12px;
             color: #718096;
         }
 
@@ -227,7 +228,7 @@
         }
 
         .details-title {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             color: #2d3748;
             margin-bottom: 15px;
@@ -251,13 +252,13 @@
         .detail-label {
             font-weight: bold;
             color: #4a5568;
-            font-size: 10px;
+            font-size: 12px;
         }
 
         .detail-value {
             color: #1a202c;
             font-weight: bold;
-            font-size: 10px;
+            font-size: 12px;
             text-align: right;
         }
 
@@ -267,7 +268,7 @@
         }
 
         .items-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             color: #2d3748;
             margin-bottom: 15px;
@@ -288,7 +289,7 @@
             font-weight: bold;
             padding: 12px 8px;
             text-align: left;
-            font-size: 10px;
+            font-size: 12px;
             text-transform: uppercase;
             border-bottom: 1px solid #e2e8f0;
         }
@@ -296,7 +297,7 @@
         .items-table td {
             padding: 12px 8px;
             border-bottom: 1px solid #f7fafc;
-            font-size: 10px;
+            font-size: 12px;
             background: white;
         }
 
@@ -319,6 +320,35 @@
         .items-table .amount {
             font-weight: bold;
             color: #667eea;
+        }
+
+        .totals-row {
+            background: #f7fafc;
+            border-top: 2px solid #667eea;
+        }
+
+        .totals-label {
+            font-weight: bold;
+            color: #2d3748;
+            font-size: 13px;
+        }
+
+        .totals-quantity {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 13px;
+        }
+
+        .totals-rate {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 13px;
+        }
+
+        .totals-amount {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 13px;
         }
 
         .no-items {
@@ -346,7 +376,7 @@
         .totals-table td {
             padding: 10px 15px;
             border: none;
-            font-size: 12px;
+            font-size: 14px;
         }
 
         .totals-table .label {
@@ -367,7 +397,7 @@
 
         .totals-table .total-row {
             border-top: 2px solid #667eea;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             background: #667eea;
             color: white;
@@ -382,7 +412,7 @@
             background: #f56565;
             color: white;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .totals-table .balance-row .label,
@@ -400,7 +430,7 @@
         }
 
         .payment-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             color: #2d3748;
             margin-bottom: 15px;
@@ -444,13 +474,13 @@
         .payment-label {
             font-weight: bold;
             color: #4a5568;
-            font-size: 10px;
+            font-size: 12px;
         }
 
         .payment-value {
             color: #1a202c;
             font-weight: bold;
-            font-size: 11px;
+            font-size: 13px;
             text-align: right;
         }
 
@@ -464,7 +494,7 @@
         }
 
         .notes-title {
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
             color: #744210;
             margin-bottom: 12px;
@@ -475,7 +505,7 @@
             font-style: italic;
             color: #744210;
             line-height: 1.5;
-            font-size: 11px;
+            font-size: 13px;
         }
 
         /* Footer */
@@ -490,7 +520,7 @@
         .footer-content {
             width: 100%;
             display: table;
-            font-size: 10px;
+            font-size: 12px;
         }
 
         .footer-left {
@@ -600,7 +630,7 @@
                         </div>
                         <div class="company-details">
                             <h1>TOTAL SUPPORT LIMITED</h1>
-                            <div class="company-tagline">Professional Logistics Solutions</div>
+                            <div class="company-tagline">YOUR ONE STOP SOLUTION</div>
                             <div class="company-address">
                                 1/F MAU LAM COMM 16-18 MAU LAM ST JORDAN HONG KONG<br>
                                 Phone: +852 56445012 | Email: tslhk2023@gmail.com<br>
@@ -740,22 +770,26 @@
                                     </tr>
                                 </table>
                             </div>
+                            @if($invoice->ship_via)
                             <div class="detail-item">
                                 <table>
                                     <tr>
                                         <td class="detail-label">Ship Via:</td>
-                                        <td class="detail-value">{{ $invoice->ship_via ?? 'N/A' }}</td>
+                                        <td class="detail-value">{{ $invoice->ship_via }}</td>
                                     </tr>
                                 </table>
                             </div>
+                            @endif
+                            @if($invoice->tracking_no)
                             <div class="detail-item">
                                 <table>
                                     <tr>
                                         <td class="detail-label">Tracking:</td>
-                                        <td class="detail-value">{{ $invoice->tracking_no ?? 'N/A' }}</td>
+                                        <td class="detail-value">{{ $invoice->tracking_no }}</td>
                                     </tr>
                                 </table>
                             </div>
+                            @endif
                             <div class="detail-item">
                                 <table>
                                     <tr>
@@ -791,6 +825,15 @@
                                     <td class="text-right amount">US${{ number_format($item->amount ?? 0, 2) }}</td>
                                 </tr>
                             @endforeach
+                            @if(count($items) > 1)
+                                <!-- Totals Row -->
+                                <tr class="totals-row">
+                                    <td class="totals-label"><strong>Totals:</strong></td>
+                                    <td class="text-center totals-quantity"><strong>{{ $items->sum('quantity') ?? 0 }}</strong></td>
+                                    <td class="text-right totals-rate"><strong>US${{ number_format($items->avg('rate') ?? 0, 2) }}</strong></td>
+                                    <td class="text-right totals-amount"><strong>US${{ number_format($items->sum('amount') ?? 0, 2) }}</strong></td>
+                                </tr>
+                            @endif
                         @else
                             <tr>
                                 <td colspan="4" class="no-items">No items found</td>
@@ -909,7 +952,7 @@
                             style="max-width: 100%; height: auto;">
                     </div>
                     <div class="footer-company">TOTAL SUPPORT LIMITED</div>
-                    <div class="footer-tagline">Professional Logistics Solutions</div>
+                    <div class="footer-tagline">YOUR ONE STOP SOLUTION</div>
                 </div>
                 <div class="footer-center">
                     <div class="footer-thank-you">Thank you for your business!</div>

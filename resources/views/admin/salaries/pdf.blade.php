@@ -14,7 +14,7 @@
 
         body {
             font-family: DejaVu Sans, sans-serif;
-            font-size: 12px;
+            font-size: 14px;
             line-height: 1.6;
             color: #1a202c;
             background: #f7fafc;
@@ -57,20 +57,20 @@
         }
 
         .company-name {
-            font-size: 22px;
+            font-size: 26px;
             font-weight: bold;
             margin-bottom: 6px;
         }
 
         .document-title {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
             margin-bottom: 8px;
             text-transform: uppercase;
         }
 
         .generated-date {
-            font-size: 12px;
+            font-size: 14px;
             opacity: 0.8;
         }
 
@@ -119,7 +119,7 @@
         .info-label {
             font-weight: bold;
             color: #4a5568;
-            font-size: 10px;
+            font-size: 12px;
             text-transform: uppercase;
             margin-bottom: 4px;
         }
@@ -127,7 +127,7 @@
         .info-value {
             font-weight: bold;
             color: #1a202c;
-            font-size: 13px;
+            font-size: 15px;
         }
 
         /* Section Styling */
@@ -136,7 +136,7 @@
         }
 
         .section-title {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             background: #667eea;
             color: white;
@@ -159,7 +159,7 @@
         td {
             padding: 12px 8px;
             text-align: left;
-            font-size: 10px;
+            font-size: 12px;
             border-bottom: 1px solid #f7fafc;
         }
 
@@ -387,7 +387,8 @@
                             <div class="info-row">
                                 <div class="info-label">Period</div>
                                 <div class="info-value">{{ $salary->period_from->format('M d, Y') }} -
-                                    {{ $salary->period_to->format('M d, Y') }}</div>
+                                    {{ $salary->period_to->format('M d, Y') }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -483,7 +484,7 @@
                     style="max-width: 100%; height: auto;">
             </div>
             <div class="footer-company">TOTAL SUPPORT LIMITED</div>
-            <div class="footer-tagline">Professional Logistics Solutions</div>
+            <div class="footer-tagline">YOUR ONE STOP SOLUTION</div>
             <div class="footer-text">This is a computer generated document. No signature is required.</div>
             <div class="footer-text">For any queries, please contact the HR department.</div>
         </div>

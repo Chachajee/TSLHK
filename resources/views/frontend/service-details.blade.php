@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -15,7 +16,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/" rel="preconnect">
   <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -52,7 +55,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a href="https://wa.me/916352961396" target="_blank" style="
+      <a href="https://wa.me/85256445012" target="_blank" style="
         display: inline-block;
         width: 35px;
         height: 35px;
@@ -63,7 +66,8 @@
         margin-left: 15px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       ">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 18px; height: 18px; vertical-align: middle;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+          style="width: 18px; height: 18px; vertical-align: middle;">
       </a>
 
     </div>
@@ -72,7 +76,8 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url({{ asset('assets/img/page-title-bg.webp') }});">
+    <div class="page-title dark-background" data-aos="fade"
+      style="background-image: url({{ asset('assets/img/page-title-bg.webp') }});">
       <div class="container position-relative">
         <h1>Service Details</h1>
         <p>Discover our comprehensive range of professional grading and quality assurance services.</p>
@@ -102,31 +107,33 @@
             </div>
 
             <h4>Professional Quality Assurance</h4>
-            <p>Our expert team provides comprehensive quality grading services with international standards compliance. We ensure accuracy, reliability, and timely delivery for all your grading requirements.</p>
+            <p>Our expert team provides comprehensive quality grading services with international standards compliance.
+              We ensure accuracy, reliability, and timely delivery for all your grading requirements.</p>
           </div>
 
           <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
             <img src="{{ asset('assets/img/services.jpg') }}" alt="" class="img-fluid services-img">
             <h3>Comprehensive Grading Services with International Standards</h3>
             <p>
-              TSLHK offers a complete range of grading services designed to meet the highest quality standards. 
-              Our experienced professionals utilize advanced methodologies and state-of-the-art equipment to ensure 
+              TSLHK offers a complete range of grading services designed to meet the highest quality standards.
+              Our experienced professionals utilize advanced methodologies and state-of-the-art equipment to ensure
               accurate and reliable results for all your grading needs.
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> <span>International standard compliance and certification.</span></li>
+              <li><i class="bi bi-check-circle"></i> <span>International standard compliance and certification.</span>
+              </li>
               <li><i class="bi bi-check-circle"></i> <span>Advanced testing methodologies and equipment.</span></li>
               <li><i class="bi bi-check-circle"></i> <span>Comprehensive documentation and reporting.</span></li>
             </ul>
             <p>
-              Our grading services cover a wide range of industries and applications, ensuring that your products 
-              meet the required specifications and quality standards. We provide detailed analysis reports with 
+              Our grading services cover a wide range of industries and applications, ensuring that your products
+              meet the required specifications and quality standards. We provide detailed analysis reports with
               clear recommendations for improvement.
             </p>
             <p>
-              With years of experience in the industry, our team understands the unique challenges and requirements 
-              of different sectors. We work closely with our clients to develop customized grading solutions that 
-              address their specific needs and objectives. Our commitment to excellence and attention to detail 
+              With years of experience in the industry, our team understands the unique challenges and requirements
+              of different sectors. We work closely with our clients to develop customized grading solutions that
+              address their specific needs and objectives. Our commitment to excellence and attention to detail
               ensures that every project receives the highest level of professional service.
             </p>
           </div>
@@ -202,7 +209,8 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -221,4 +229,5 @@
   <script src="{{ asset('assets/js/main.js') }}"></script>
 
 </body>
-</html> 
+
+</html>

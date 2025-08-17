@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -15,7 +16,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/" rel="preconnect">
   <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -52,7 +55,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a href="https://wa.me/916352961396" target="_blank" style="
+      <a href="https://wa.me/85256445012" target="_blank" style="
         display: inline-block;
         width: 35px;
         height: 35px;
@@ -63,7 +66,8 @@
         margin-left: 15px;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       ">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 18px; height: 18px; vertical-align: middle;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+          style="width: 18px; height: 18px; vertical-align: middle;">
       </a>
 
     </div>
@@ -72,7 +76,8 @@
   <main class="main">
 
     <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade" style="background-image: url({{ asset('assets/img/page-title-bg.webp') }});">
+    <div class="page-title dark-background" data-aos="fade"
+      style="background-image: url({{ asset('assets/img/page-title-bg.webp') }});">
       <div class="container position-relative">
         <h1>Portfolio Details</h1>
         <p>Explore our detailed portfolio showcasing our expertise in grading and quality assurance services.</p>
@@ -147,8 +152,8 @@
             <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">
               <h2>Professional Grading Services Excellence</h2>
               <p>
-                Our comprehensive grading services ensure the highest quality standards for your products. 
-                We specialize in detailed analysis and certification processes that meet international standards. 
+                Our comprehensive grading services ensure the highest quality standards for your products.
+                We specialize in detailed analysis and certification processes that meet international standards.
                 Our team of experts provides thorough evaluation and documentation for all grading requirements.
               </p>
             </div>
@@ -225,7 +230,8 @@
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -244,4 +250,5 @@
   <script src="{{ asset('assets/js/main.js') }}"></script>
 
 </body>
-</html> 
+
+</html>

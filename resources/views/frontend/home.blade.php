@@ -72,7 +72,7 @@
       </nav>
 
       <!--a class="cta-btn" href="index-2.html#about">Get Started</a-->
-    <a href="https://wa.me/916352961396" target="_blank" style="
+      <a href="https://wa.me/85256445012" target="_blank" style="
   display: inline-block;
   width: 35px;
   height: 35px;
@@ -83,16 +83,17 @@
   margin-left: 15px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 ">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 18px; height: 18px; vertical-align: middle;">
-</a>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"
+          style="width: 18px; height: 18px; vertical-align: middle;">
+      </a>
 
 
     </div>
   </header>
 
 
-<!-- Chatbot Icon -->
-<div id="chatbot-icon" style="
+  <!-- Chatbot Icon -->
+  <div id="chatbot-icon" style="
   position: fixed;
   bottom: 20px;
   left: 20px;
@@ -108,11 +109,11 @@
   z-index: 9999;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 ">
-  💬
-</div>
+    💬
+  </div>
 
-<!-- Chatbot Box -->
-<div id="chatbot-box" style="
+  <!-- Chatbot Box -->
+  <div id="chatbot-box" style="
   display: none;
   position: fixed;
   bottom: 90px;
@@ -127,80 +128,80 @@
   font-family: Arial, sans-serif;
 ">
 
-  <!-- Header -->
-  <div style="background-color: #007bff; color: white; padding: 10px; font-weight: bold;">
-    🤖TSLHK Bot
-  </div>
+    <!-- Header -->
+    <div style="background-color: #007bff; color: white; padding: 10px; font-weight: bold;">
+      🤖TSLHK Bot
+    </div>
 
-  <!-- Chat Messages -->
-  <div id="chat-messages" style="
+    <!-- Chat Messages -->
+    <div id="chat-messages" style="
     padding: 10px;
     height: 250px;
     overflow-y: auto;
     font-size: 14px;
   ">
-    <div><strong>Bot:</strong> Hi! How can I help you?<br>Please Chat on What'sApp</div>
-  </div>
+      <div><strong>Bot:</strong> Hi! How can I help you?<br>Please Chat on What'sApp</div>
+    </div>
 
-  <!-- Input -->
-  <div style="display: flex; border-top: 1px solid #ccc;">
-    <input type="text" id="user-input" placeholder="Type your message..." style="
+    <!-- Input -->
+    <div style="display: flex; border-top: 1px solid #ccc;">
+      <input type="text" id="user-input" placeholder="Type your message..." style="
       flex: 1;
       padding: 10px;
       border: none;
       font-size: 14px;
     ">
-    <button onclick="sendMessage()" style="
+      <button onclick="sendMessage()" style="
       background-color: #007bff;
       color: white;
       border: none;
       padding: 10px 15px;
       cursor: pointer;
     ">Send</button>
+    </div>
   </div>
-</div>
 
-<script>
-  // Toggle chatbot box
-  document.getElementById("chatbot-icon").onclick = function () {
-    var box = document.getElementById("chatbot-box");
-    box.style.display = box.style.display === "none" ? "block" : "none";
-  };
+  <script>
+    // Toggle chatbot box
+    document.getElementById("chatbot-icon").onclick = function () {
+      var box = document.getElementById("chatbot-box");
+      box.style.display = box.style.display === "none" ? "block" : "none";
+    };
 
-  // Handle send
-  function sendMessage() {
-    const input = document.getElementById("user-input");
-    const messages = document.getElementById("chat-messages");
+    // Handle send
+    function sendMessage() {
+      const input = document.getElementById("user-input");
+      const messages = document.getElementById("chat-messages");
 
-    const userText = input.value.trim();
-    if (userText === "") return;
+      const userText = input.value.trim();
+      if (userText === "") return;
 
-    // Add user message
-    const userMsg = document.createElement("div");
-    userMsg.innerHTML = `<strong>You:</strong> ${userText}`;
-    messages.appendChild(userMsg);
+      // Add user message
+      const userMsg = document.createElement("div");
+      userMsg.innerHTML = `<strong>You:</strong> ${userText}`;
+      messages.appendChild(userMsg);
 
-    // Bot auto reply
-    setTimeout(() => {
-      const botMsg = document.createElement("div");
-      botMsg.innerHTML = `<strong>Bot:</strong> ${generateReply(userText)}`;
-      messages.appendChild(botMsg);
+      // Bot auto reply
+      setTimeout(() => {
+        const botMsg = document.createElement("div");
+        botMsg.innerHTML = `<strong>Bot:</strong> ${generateReply(userText)}`;
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      }, 500);
+
+      input.value = "";
       messages.scrollTop = messages.scrollHeight;
-    }, 500);
+    }
 
-    input.value = "";
-    messages.scrollTop = messages.scrollHeight;
-  }
-
-  // Simple auto-reply logic
-  function generateReply(text) {
-    text = text.toLowerCase();
-    if (text.includes("hello") || text.includes("hi")) return "Hello! 👋";
-    if (text.includes("price") || text.includes("cost")) return "Please tell me which product you're referring to.";
-    if (text.includes("help") || text.includes("support")) return "Sure! I'm here to help you.";
-    return "Sorry, I'm just a demo bot. Try typing 'price' or 'help'.";
-  }
-</script>
+    // Simple auto-reply logic
+    function generateReply(text) {
+      text = text.toLowerCase();
+      if (text.includes("hello") || text.includes("hi")) return "Hello! 👋";
+      if (text.includes("price") || text.includes("cost")) return "Please tell me which product you're referring to.";
+      if (text.includes("help") || text.includes("support")) return "Sure! I'm here to help you.";
+      return "Sorry, I'm just a demo bot. Try typing 'price' or 'help'.";
+    }
+  </script>
 
 
 
@@ -214,7 +215,8 @@
 
       <div class="container d-flex flex-column align-items-center">
         <h2 data-aos="fade-up" data-aos-delay="100">Your Ultimate Mobile Electronics Hub.</h2>
-        <p data-aos="fade-up" data-aos-delay="200">Explore our wide range of electronic items including laptops, mobile phones, and accessories.</p>
+        <p data-aos="fade-up" data-aos-delay="200">Explore our wide range of electronic items including laptops, mobile
+          phones, and accessories.</p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
           <!--a href="#about" class="btn-get-started">Get Started</a>
           <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Watch Video</span></a-->
@@ -233,16 +235,18 @@
             <h3>🏆 Top Sales – Best Deals You Can’t Miss</h3>
             <img src="assets/img/about.jpg" class="img-fluid rounded-4 mb-4" alt="">
             <p>Discover the most loved and best-selling products at TSLHK!
-              Our Top Sales section features high-demand items that customers trust and choose repeatedly. Whether you're looking for unbeatable prices, quality-assured devices, or exclusive offers, this is where the best of the best live.<br>
-              
+              Our Top Sales section features high-demand items that customers trust and choose repeatedly. Whether
+              you're looking for unbeatable prices, quality-assured devices, or exclusive offers, this is where the best
+              of the best live.<br>
+
               ✅ Handpicked from verified stock<br>
               ✅ Limited-time offers on fast-moving items<br>
               ✅ Refurbished & graded devices with full warranty<br>
               ✅ Updated regularly based on real customer demand<br>
-              
+
               🎯 Don’t wait — these deals don’t last long!
-              
-              </p>
+
+            </p>
           </div>
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
             <div class="content ps-0 ps-lg-5">
@@ -256,9 +260,12 @@
               </ul>
               <p>
                 Explore our Top Sales – the most purchased and highest-rated products on TSLHK!
-These are the customer favorites that continue to earn praise and 5-star reviews for their unbeatable value and quality.<br><br>Thousands of happy customers trust our top-selling products, and their feedback speaks for itself.<br><br>We offer the most competitive prices in the market – no hidden charges, no compromises.
-If it’s on our Top Sales list, you’re getting the best deal possible.<br><br>
-🛒 Fast-selling devices, exclusive discounts, and trusted quality – all in one place.
+                These are the customer favorites that continue to earn praise and 5-star reviews for their unbeatable
+                value and quality.<br><br>Thousands of happy customers trust our top-selling products, and their
+                feedback speaks for itself.<br><br>We offer the most competitive prices in the market – no hidden
+                charges, no compromises.
+                If it’s on our Top Sales list, you’re getting the best deal possible.<br><br>
+                🛒 Fast-selling devices, exclusive discounts, and trusted quality – all in one place.
               </p>
 
               <div class="position-relative mt-4">
@@ -284,7 +291,8 @@ If it’s on our Top Sales list, you’re getting the best deal possible.<br><br
             <div class="stats-item d-flex align-items-center w-100 h-100">
               <i class="bi bi-emoji-smile color-blue flex-shrink-0"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="300" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="300" data-purecounter-duration="1"
+                  class="purecounter"></span>
                 <p>Happy Clients</p>
               </div>
             </div>
@@ -294,7 +302,8 @@ If it’s on our Top Sales list, you’re getting the best deal possible.<br><br
             <div class="stats-item d-flex align-items-center w-100 h-100">
               <i class="bi bi-journal-richtext color-orange flex-shrink-0"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="1021" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="1021" data-purecounter-duration="1"
+                  class="purecounter"></span>
                 <p>Products</p>
               </div>
             </div>
@@ -304,7 +313,8 @@ If it’s on our Top Sales list, you’re getting the best deal possible.<br><br
             <div class="stats-item d-flex align-items-center w-100 h-100">
               <i class="bi bi-headset color-green flex-shrink-0"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="10463" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="10463" data-purecounter-duration="1"
+                  class="purecounter"></span>
                 <p>Hours Of Support</p>
               </div>
             </div>
@@ -314,7 +324,8 @@ If it’s on our Top Sales list, you’re getting the best deal possible.<br><br
             <div class="stats-item d-flex align-items-center w-100 h-100">
               <i class="bi bi-people color-pink flex-shrink-0"></i>
               <div>
-                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+                <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1"
+                  class="purecounter"></span>
                 <p>Hard Workers</p>
               </div>
             </div>
@@ -327,45 +338,49 @@ If it’s on our Top Sales list, you’re getting the best deal possible.<br><br
     </section><!-- /Stats Section -->
 
     <section class="intro">
-  <h2>Welcome!</h2>
-  <h2 class="highlight">TRUSTED PARTNER COMPANY</h2>
-  <p>
-    We in TPC technology are dealing with high end brands quality products with good services within the globe.
-  </p>
-</section>
+      <h2>Welcome!</h2>
+      <h2 class="highlight">TRUSTED PARTNER COMPANY</h2>
+      <p>
+        We in TPC technology are dealing with high end brands quality products with good services within the globe.
+      </p>
+    </section>
 
-<section class="card-container">
-  <!-- Card 1 -->
-  <div class="card">
-    <div class="icon"><i class="fas fa-handshake-angle"></i></div>
-    <h3>WHY CHOOSE US.</h3>
-    <h4>Because we are Reliable.</h4>
-    <p>
-      We believe that technology can make life easier and better. We achieve this by being innovative and reliable in terms of our products and services.
-      Our competency is our integrity, reliability, exceptional service and continuous up-to-date availability of products.
-    </p>
-  </div>
+    <section class="card-container">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-handshake-angle"></i></div>
+        <h3>WHY CHOOSE US.</h3>
+        <h4>Because we are Reliable.</h4>
+        <p>
+          We believe that technology can make life easier and better. We achieve this by being innovative and reliable
+          in terms of our products and services.
+          Our competency is our integrity, reliability, exceptional service and continuous up-to-date availability of
+          products.
+        </p>
+      </div>
 
-  <!-- Card 2 -->
-  <div class="card">
-    <div class="icon"><i class="fas fa-bullseye"></i></div>
-    <h3>OUR MISSION.</h3>
-    <h4>To Redefine your Brand.</h4>
-    <p>
-      Our mission is to provide our clients the highest quality products and rapid services, with newest innovation in telecommunications and electronic trading industry.
-    </p>
-  </div>
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-bullseye"></i></div>
+        <h3>OUR MISSION.</h3>
+        <h4>To Redefine your Brand.</h4>
+        <p>
+          Our mission is to provide our clients the highest quality products and rapid services, with newest innovation
+          in telecommunications and electronic trading industry.
+        </p>
+      </div>
 
-  <!-- Card 3 -->
-  <div class="card">
-    <div class="icon"><i class="fas fa-people-group"></i></div>
-    <h3>WHAT WE DO.</h3>
-    <h4>Make our Customers Happy.</h4>
-    <p>
-      With technical crew and sufficient inventory and an established supplier network, we ensure that our customers receive our products promptly at any of their sites.
-    </p>
-  </div>
-</section>
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="icon"><i class="fas fa-people-group"></i></div>
+        <h3>WHAT WE DO.</h3>
+        <h4>Make our Customers Happy.</h4>
+        <p>
+          With technical crew and sufficient inventory and an established supplier network, we ensure that our customers
+          receive our products promptly at any of their sites.
+        </p>
+      </div>
+    </section>
 
 
     <!-- Clients Section -->
@@ -412,36 +427,36 @@ If it’s on our Top Sales list, you’re getting the best deal possible.<br><br
 
         <ul class="nav nav-tabs row d-flex" data-aos="fade-up" data-aos-delay="100">
 
-  <li class="nav-item col-3">
-    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
-      <i class="bi bi-phone"></i>
-      <h4 class="d-none d-lg-block">Smart Phones</h4>
-    </a>
-  </li>
+          <li class="nav-item col-3">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+              <i class="bi bi-phone"></i>
+              <h4 class="d-none d-lg-block">Smart Phones</h4>
+            </a>
+          </li>
 
-  <li class="nav-item col-3">
-    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
-      <i class="bi bi-tablet"></i>
-      <h4 class="d-none d-lg-block">Tablets</h4>
-    </a>
-  </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+              <i class="bi bi-tablet"></i>
+              <h4 class="d-none d-lg-block">Tablets</h4>
+            </a>
+          </li>
 
-  <li class="nav-item col-3">
-    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
-      <i class="bi bi-laptop"></i>
-      <h4 class="d-none d-lg-block">Laptops</h4>
-    </a>
-  </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+              <i class="bi bi-laptop"></i>
+              <h4 class="d-none d-lg-block">Laptops</h4>
+            </a>
+          </li>
 
-  <li class="nav-item col-3">
-    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
-      <i class="bi bi-headphones"></i>
-      <h4 class="d-none d-lg-block">Accessories</h4>
-    </a>
-  </li>
+          <li class="nav-item col-3">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
+              <i class="bi bi-headphones"></i>
+              <h4 class="d-none d-lg-block">Accessories</h4>
+            </a>
+          </li>
 
-</ul>
-<!-- End Tab Nav -->
+        </ul>
+        <!-- End Tab Nav -->
 
         <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
@@ -450,37 +465,47 @@ If it’s on our Top Sales list, you’re getting the best deal possible.<br><br
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
                 <h3>One-Stop Wholesale Importer of Electronics</h3>
                 <p class="fst-italic">
-                  At our core, we are committed to supplying high-quality electronics through trusted global imports, enabling businesses to thrive with reliable and affordable technology.<br><br>
+                  At our core, we are committed to supplying high-quality electronics through trusted global imports,
+                  enabling businesses to thrive with reliable and affordable technology.<br><br>
 
-✔️ Wide Range of Imported Electronics
-We specialize in importing brand-new as well as premium second-hand smartphones, tablets, laptops, and accessories from top international markets.<br><br>
+                  ✔️ Wide Range of Imported Electronics
+                  We specialize in importing brand-new as well as premium second-hand smartphones, tablets, laptops, and
+                  accessories from top international markets.<br><br>
 
-✔️ Certified Quality & Performance Testing
-Every product undergoes rigorous quality checks by our expert technical team to ensure excellent performance and zero defects before reaching our clients.<br><br>
+                  ✔️ Certified Quality & Performance Testing
+                  Every product undergoes rigorous quality checks by our expert technical team to ensure excellent
+                  performance and zero defects before reaching our clients.<br><br>
 
-✔️ Direct Imports from Trusted Suppliers
-We maintain strong relationships with verified global suppliers, allowing us to source authentic products at competitive wholesale prices.<br><br>
+                  ✔️ Direct Imports from Trusted Suppliers
+                  We maintain strong relationships with verified global suppliers, allowing us to source authentic
+                  products at competitive wholesale prices.<br><br>
 
-✔️ Wholesale Supply with Fast Dispatch
-Whether you're buying in small or bulk quantities, our well-managed inventory and streamlined logistics ensure timely delivery for all your business needs.<br><br>
+                  ✔️ Wholesale Supply with Fast Dispatch
+                  Whether you're buying in small or bulk quantities, our well-managed inventory and streamlined
+                  logistics ensure timely delivery for all your business needs.<br><br>
 
-✔️ Serving Resellers, Retailers & Repair Shops
-Our import operations are tailored for wholesalers, mobile dealers, laptop refurbishers, and tech stores looking for consistent supply and genuine quality.<br><br>
-✔️ Stock Availability & Custom Orders
-We keep a ready inventory of high-demand models and also fulfill special orders based on your bulk requirements, including specific brands, grades, and accessories.<br><br>
+                  ✔️ Serving Resellers, Retailers & Repair Shops
+                  Our import operations are tailored for wholesalers, mobile dealers, laptop refurbishers, and tech
+                  stores looking for consistent supply and genuine quality.<br><br>
+                  ✔️ Stock Availability & Custom Orders
+                  We keep a ready inventory of high-demand models and also fulfill special orders based on your bulk
+                  requirements, including specific brands, grades, and accessories.<br><br>
 
-✔️ Transparent Grading & Product Labelling
-Every second-hand product is clearly graded (A+, A, B, etc.) with full transparency, so our clients know exactly what they’re getting — no hidden defects, no surprises.<br><br>
+                  ✔️ Transparent Grading & Product Labelling
+                  Every second-hand product is clearly graded (A+, A, B, etc.) with full transparency, so our clients
+                  know exactly what they’re getting — no hidden defects, no surprises.<br><br>
 
-✔️ Warranty & After-Sales Support Options
-We offer limited warranty and technical guidance for selected products, helping your business maintain customer trust even after the sale.<br><br>
+                  ✔️ Warranty & After-Sales Support Options
+                  We offer limited warranty and technical guidance for selected products, helping your business maintain
+                  customer trust even after the sale.<br><br>
 
-✔️ Best Price Guarantee for B2B Buyers
-With strong sourcing and no middlemen, we ensure that our wholesale clients always get the best possible rates — whether it’s for a single carton or an entire container.
+                  ✔️ Best Price Guarantee for B2B Buyers
+                  With strong sourcing and no middlemen, we ensure that our wholesale clients always get the best
+                  possible rates — whether it’s for a single carton or an entire container.
 
 
                 </p>
-               
+
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
                 <img src="assets/img/working-1.jpg" alt="" class="img-fluid">
@@ -526,11 +551,13 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <h3>Saul Goodman</h3>
                 <h4>Ceo &amp; Founder</h4>
                 <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
+                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus.
+                    Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -542,11 +569,13 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <h3>Sara Wilsson</h3>
                 <h4>Designer</h4>
                 <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
+                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram
+                    malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -558,11 +587,13 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <h3>Jena Karlis</h3>
                 <h4>Store Owner</h4>
                 <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
+                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis
+                    minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -574,11 +605,14 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <h3>Matt Brandon</h3>
                 <h4>Freelancer</h4>
                 <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
+                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim
+                    velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum
+                    veniam.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -590,11 +624,14 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <h3>John Larson</h3>
                 <h4>Entrepreneur</h4>
                 <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
+                    class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
+                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim
+                    culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum
+                    quid.</span>
                   <i class="bi bi-quote quote-icon-right"></i>
                 </p>
               </div>
@@ -637,7 +674,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>App 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/app-1.jpg" title="App 1" data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -648,7 +686,9 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Product 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-1.jpg" title="Product 1" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/product-1.jpg" title="Product 1"
+                    data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                      class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -659,7 +699,9 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Branding 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/branding-1.jpg" title="Branding 1"
+                    data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                      class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -670,7 +712,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Books 1</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/books-1.jpg" title="Branding 1" data-gallery="portfolio-gallery-book"
+                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -681,7 +724,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>App 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/app-2.jpg" title="App 2" data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -692,7 +736,9 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Product 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-2.jpg" title="Product 2" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/product-2.jpg" title="Product 2"
+                    data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                      class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -703,7 +749,9 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Branding 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/branding-2.jpg" title="Branding 2"
+                    data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                      class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -714,7 +762,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Books 2</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/books-2.jpg" title="Branding 2" data-gallery="portfolio-gallery-book"
+                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -725,7 +774,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>App 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/app-3.jpg" title="App 3" data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -736,7 +786,9 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Product 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/product-3.jpg" title="Product 3" data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/product-3.jpg" title="Product 3"
+                    data-gallery="portfolio-gallery-product" class="glightbox preview-link"><i
+                      class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -747,7 +799,9 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Branding 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/branding-3.jpg" title="Branding 2" data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/branding-3.jpg" title="Branding 2"
+                    data-gallery="portfolio-gallery-branding" class="glightbox preview-link"><i
+                      class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -758,7 +812,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
                 <div class="portfolio-info">
                   <h4>Books 3</h4>
                   <p>Lorem ipsum, dolor sit amet consectetur</p>
-                  <a href="assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery-book" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="assets/img/portfolio/books-3.jpg" title="Branding 3" data-gallery="portfolio-gallery-book"
+                    class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 </div>
               </div>
             </div><!-- End Portfolio Item -->
@@ -787,7 +842,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
             <div class="row gy-4">
 
               <div class="col-lg-12">
-                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+                  data-aos-delay="200">
                   <i class="bi bi-geo-alt"></i>
                   <h3>Address</h3>
                   <p>A108 Adam Street, New York, NY 535022</p>
@@ -795,7 +851,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
               </div><!-- End Info Item -->
 
               <div class="col-md-6">
-                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+                  data-aos-delay="300">
                   <i class="bi bi-telephone"></i>
                   <h3>Call Us</h3>
                   <p>+1 5589 55488 55</p>
@@ -803,7 +860,8 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
               </div><!-- End Info Item -->
 
               <div class="col-md-6">
-                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
+                <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up"
+                  data-aos-delay="400">
                   <i class="bi bi-envelope"></i>
                   <h3>Email Us</h3>
                   <p>info@example.com</p>
@@ -857,7 +915,7 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
             <li><i class="bi bi-chevron-right"></i> <a href="#">Privacy policy</a></li>
           </ul>
         </div-->
-<img src="assets/img/logo.png" style="width: 300px; height: 300px;" alt="">
+        <img src="assets/img/logo.png" style="width: 300px; height: 300px;" alt="">
         <!--div class="col-lg-2 col-md-3 footer-links">
           <h4>Our Services</h4>
           <ul>
@@ -890,14 +948,16 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
         <!-- You can delete the links only if you've purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">TSLHK</a> Distributed by <a href="https://themewagon.com/">TSLHK
+        Designed by <a href="https://bootstrapmade.com/">TSLHK</a> Distributed by <a
+          href="https://themewagon.com/">TSLHK
       </div>
     </div>
 
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
@@ -919,4 +979,5 @@ With strong sourcing and no middlemen, we ensure that our wholesale clients alwa
 
 
 <!-- Mirrored from themewagon.github.io/Dewi/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 27 Jun 2025 10:14:08 GMT -->
+
 </html>

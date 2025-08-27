@@ -80,7 +80,7 @@ class InvoiceController extends Controller
                 'address' => $request->ship_address,
                 'vat_no' => $request->ship_vat_no,
                 'eori' => $request->ship_eori,
-                'phone' => '',
+                'phone' => $request->ship_phone,
                 'email' => $request->ship_email,
             ]);
 
@@ -210,6 +210,7 @@ class InvoiceController extends Controller
                 'address' => $request->ship_address,
                 'vat_no' => $request->ship_vat_no,
                 'eori' => $request->ship_eori,
+                'phone' => $request->ship_phone,
                 'email' => $request->ship_email,
             ]);
 

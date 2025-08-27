@@ -45,6 +45,7 @@ class UpdateInvoiceRequest extends FormRequest
             'ship_address' => 'required|string',
             'ship_vat_no' => 'required|string|max:255',
             'ship_eori' => 'required|string|max:255',
+            'ship_phone' => 'required|string|max:255',
             'ship_email' => 'required|email|max:255',
             
             // Shipping Details

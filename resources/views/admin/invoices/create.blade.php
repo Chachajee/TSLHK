@@ -259,6 +259,11 @@ document.addEventListener('DOMContentLoaded', function() {
                         </div>
                         <div class="row g-2 mt-2">
                             <div class="col-md-6">
+                                <label for="ship_phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control @error('ship_phone') is-invalid @enderror" id="ship_phone" name="ship_phone" value="{{ old('ship_phone') }}" required>
+                                @error('ship_phone')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-6">
                                 <label for="ship_email" class="form-label">Email</label>
                                 <div class="input-group">
                                     <span class="input-group-text"><i class="ti ti-mail"></i></span>

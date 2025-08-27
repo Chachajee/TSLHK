@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -15,7 +16,9 @@
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/" rel="preconnect">
   <link href="https://fonts.gstatic.com/" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&amp;family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -27,7 +30,7 @@
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 </head>
 
@@ -38,7 +41,7 @@
 
       <a href="index-2.html" class="logo d-flex align-items-center me-auto">
         <!-- Uncomment the line below if you also wish to use an image logo -->
-        <img src="assets/img/logo.png" style="width: 100px; height: 100px;" alt="">
+        {{-- <img src="assets/img/logo.png" style="width: 50px; " alt=""> --}}
         <h1 class="sitename">TSLHK</h1>
       </a>
 
@@ -52,8 +55,9 @@
           <!--li class="dropdown"><a href="#"><span>RMA Form</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="#">Salary Slip</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i-- class="bi bi-chevron-down toggle-dropdown"></i--> </a>
-                <!--ul>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i-- class="bi bi-chevron-down toggle-dropdown"></i-->
+          </a>
+          <!--ul>
                   <li><a href="#">Deep Dropdown 1</a></li>
                   <li><a href="#">Deep Dropdown 2</a></li>
                   <li><a href="#">Deep Dropdown 3</a></li>
@@ -214,7 +218,7 @@
       <img src="assets/img/hero-bg.jpg" alt="" data-aos="fade-in">
 
       <div class="container d-flex flex-column align-items-center">
-        <h2 data-aos="fade-up" data-aos-delay="100">Your Ultimate Mobile Electronics Hub.</h2>
+        <h2 data-aos="fade-up" data-aos-delay="100">Your ultimate consumer electronics hub.</h2>
         <p data-aos="fade-up" data-aos-delay="200">Explore our wide range of electronic items including laptops, mobile
           phones, and accessories.</p>
         <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
@@ -384,7 +388,7 @@
 
 
     <!-- Clients Section -->
-    <section id="clients" class="clients section light-background">
+    {{-- <section id="clients" class="clients section light-background">
 
       <div class="container" data-aos="fade-up">
 
@@ -418,7 +422,7 @@
 
       </div>
 
-    </section><!-- /Clients Section -->
+    </section><!-- /Clients Section --> --}}
 
     <!-- Features Section -->
     <section id="features" class="features section">
@@ -521,7 +525,7 @@
 
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section dark-background">
+    {{-- <section id="testimonials" class="testimonials section dark-background">
 
       <img src="assets/img/testimonials-bg.jpg" class="testimonials-bg" alt="">
 
@@ -643,7 +647,7 @@
 
       </div>
 
-    </section><!-- /Testimonials Section -->
+    </section><!-- /Testimonials Section --> --}}
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio section">
@@ -846,7 +850,7 @@
                   data-aos-delay="200">
                   <i class="bi bi-geo-alt"></i>
                   <h3>Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
+                  <p>1/F MAU LAM COMM 16-18 MAU LAM ST JORDAN</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -855,7 +859,7 @@
                   data-aos-delay="300">
                   <i class="bi bi-telephone"></i>
                   <h3>Call Us</h3>
-                  <p>+1 5589 55488 55</p>
+                  <p>+852 56445012</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -864,7 +868,7 @@
                   data-aos-delay="400">
                   <i class="bi bi-envelope"></i>
                   <h3>Email Us</h3>
-                  <p>info@example.com</p>
+                  <p>tslhk2023@gmail.com</p>
                 </div>
               </div><!-- End Info Item -->
 
@@ -892,10 +896,11 @@
             <span class="sitename">TSLHK</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@tslhk.com</span></p>
+            <p>Providing the best deals on mobile electronics and accessories. Discover our premium products and
+              services tailored to meet your needs.</p>
+            <p>1/F MAU LAM COMM 16-18 MAU LAM ST JORDAN</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>+852 56445012</span></p>
+            <p><strong>Email:</strong> <span>tslhk2023@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href="#"><i class="bi bi-twitter-x"></i></a>

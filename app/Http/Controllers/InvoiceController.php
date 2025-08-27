@@ -6,6 +6,7 @@ use App\Models\Invoice;
 use App\Models\InvoiceItem;
 use App\Models\InvoiceParty;
 use App\Models\PaymentInstruction;
+use App\Models\PaymentInstructionOption;
 use App\Http\Requests\StoreInvoiceRequest;
 use App\Http\Requests\UpdateInvoiceRequest;
 use App\Services\PdfService;
@@ -31,7 +32,8 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        return view('admin.invoices.create');
+        $paymentInstructionOptions = PaymentInstructionOption::getOptionsForDropdown();
+        return view('admin.invoices.create', compact('paymentInstructionOptions'));
     }
 
     /**
@@ -95,10 +97,18 @@ class InvoiceController extends Controller
             // Create payment instructions
             PaymentInstruction::create([
                 'invoice_id' => $invoice->id,
-                'bank_name' => $request->bank_name,
+                'account_name' => $request->account_name,
+                'account_number' => $request->account_number,
                 'bank_code' => $request->bank_code,
+                'branch_code' => $request->branch_code,
                 'swift_bic' => $request->swift_bic,
+                'swift_code' => $request->swift_code,
+                'account_location' => $request->account_location,
+                'bank_name' => $request->bank_name,
+                'bank_address' => $request->bank_address,
+                'account_type' => $request->account_type,
                 'multi_currency_ac_no' => $request->multi_currency_ac_no,
+                'payment_instruction_option' => $request->payment_instruction_option,
             ]);
 
             DB::commit();
@@ -154,8 +164,9 @@ class InvoiceController extends Controller
     public function edit(Invoice $invoice)
     {
         $invoice->load(['items', 'billTo', 'shipTo', 'paymentInstructions']);
+        $paymentInstructionOptions = PaymentInstructionOption::getOptionsForDropdown();
 
-        return view('admin.invoices.edit', compact('invoice'));
+        return view('admin.invoices.edit', compact('invoice', 'paymentInstructionOptions'));
     }
 
     /**
@@ -214,10 +225,18 @@ class InvoiceController extends Controller
 
             // Update payment instructions
             $invoice->paymentInstructions->update([
-                'bank_name' => $request->bank_name,
+                'account_name' => $request->account_name,
+                'account_number' => $request->account_number,
                 'bank_code' => $request->bank_code,
+                'branch_code' => $request->branch_code,
                 'swift_bic' => $request->swift_bic,
+                'swift_code' => $request->swift_code,
+                'account_location' => $request->account_location,
+                'bank_name' => $request->bank_name,
+                'bank_address' => $request->bank_address,
+                'account_type' => $request->account_type,
                 'multi_currency_ac_no' => $request->multi_currency_ac_no,
+                'payment_instruction_option' => $request->payment_instruction_option,
             ]);
 
             DB::commit();

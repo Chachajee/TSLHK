@@ -67,9 +67,17 @@ class StoreInvoiceRequest extends FormRequest
             'notes' => 'nullable|string',
             
             // Payment Instructions
-            'bank_name' => 'required|string|max:255',
+            'payment_instruction_option' => 'required|string|max:255',
+            'account_name' => 'required|string|max:255',
+            'account_number' => 'required|string|max:255',
             'bank_code' => 'required|string|max:255',
+            'branch_code' => 'required|string|max:255',
             'swift_bic' => 'required|string|max:255',
+            'swift_code' => 'required|string|max:255',
+            'account_location' => 'required|string|max:255',
+            'bank_name' => 'required|string|max:255',
+            'bank_address' => 'required|string|max:255',
+            'account_type' => 'required|string|max:255',
             'multi_currency_ac_no' => 'required|string|max:255',
         ];
     }

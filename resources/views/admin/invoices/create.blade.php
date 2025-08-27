@@ -92,6 +92,52 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('shipping').addEventListener('input', calculateTotals);
     document.getElementById('paid').addEventListener('input', calculateTotals);
     addItemRow(false);
+    
+    // Payment Instruction Dropdown Functionality
+    const paymentInstructionSelect = document.getElementById('payment_instruction_option');
+    const accountNameInput = document.getElementById('account_name');
+    const accountNumberInput = document.getElementById('account_number');
+    const bankCodeInput = document.getElementById('bank_code');
+    const branchCodeInput = document.getElementById('branch_code');
+    const swiftBicInput = document.getElementById('swift_bic');
+    const swiftCodeInput = document.getElementById('swift_code');
+    const accountLocationInput = document.getElementById('account_location');
+    const bankNameInput = document.getElementById('bank_name');
+    const bankAddressInput = document.getElementById('bank_address');
+    const accountTypeInput = document.getElementById('account_type');
+    const multiCurrencyAcNoInput = document.getElementById('multi_currency_ac_no');
+
+    paymentInstructionSelect.addEventListener('change', function() {
+        const selectedOption = this.options[this.selectedIndex];
+        
+        if (selectedOption.value) {
+            // Auto-fill all fields with selected option data
+            accountNameInput.value = selectedOption.dataset.accountName || '';
+            accountNumberInput.value = selectedOption.dataset.accountNumber || '';
+            bankCodeInput.value = selectedOption.dataset.bankCode || '';
+            branchCodeInput.value = selectedOption.dataset.branchCode || '';
+            swiftBicInput.value = selectedOption.dataset.swiftBic || '';
+            swiftCodeInput.value = selectedOption.dataset.swiftCode || '';
+            accountLocationInput.value = selectedOption.dataset.accountLocation || '';
+            bankNameInput.value = selectedOption.dataset.bankName || '';
+            bankAddressInput.value = selectedOption.dataset.bankAddress || '';
+            accountTypeInput.value = selectedOption.dataset.accountType || '';
+            multiCurrencyAcNoInput.value = selectedOption.dataset.multiCurrencyAcNo || '';
+        } else {
+            // Clear all fields if no option is selected
+            accountNameInput.value = '';
+            accountNumberInput.value = '';
+            bankCodeInput.value = '';
+            branchCodeInput.value = '';
+            swiftBicInput.value = '';
+            swiftCodeInput.value = '';
+            accountLocationInput.value = '';
+            bankNameInput.value = '';
+            bankAddressInput.value = '';
+            accountTypeInput.value = '';
+            multiCurrencyAcNoInput.value = '';
+        }
+    });
 });
 </script>
 @endsection
@@ -332,26 +378,91 @@ document.addEventListener('DOMContentLoaded', function() {
                         <i class="ti ti-credit-card text-primary me-2"></i>
                         <span class="fw-bold">Payment Instructions</span>
                     </div>
-                    <div class="card-body row g-3">
-                        <div class="col-md-3">
-                            <label for="bank_name" class="form-label">Bank Name</label>
-                            <input type="text" class="form-control @error('bank_name') is-invalid @enderror" id="bank_name" name="bank_name" value="{{ old('bank_name') }}" required>
-                            @error('bank_name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                    <div class="card-body">
+                        <!-- Payment Instruction Option Dropdown -->
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="payment_instruction_option" class="form-label">Select Payment Instruction</label>
+                                <select class="form-control @error('payment_instruction_option') is-invalid @enderror" id="payment_instruction_option" name="payment_instruction_option" required>
+                                    <option value="">Select an option...</option>
+                                    @foreach($paymentInstructionOptions as $option)
+                                        <option value="{{ $option->option_name }}" 
+                                                data-account-name="{{ $option->account_name }}"
+                                                data-account-number="{{ $option->account_number }}"
+                                                data-bank-code="{{ $option->bank_code }}"
+                                                data-branch-code="{{ $option->branch_code }}"
+                                                data-swift-bic="{{ $option->swift_bic }}"
+                                                data-swift-code="{{ $option->swift_code }}"
+                                                data-account-location="{{ $option->account_location }}"
+                                                data-bank-name="{{ $option->bank_name }}"
+                                                data-bank-address="{{ $option->bank_address }}"
+                                                data-account-type="{{ $option->account_type }}"
+                                                data-multi-currency-ac-no="{{ $option->multi_currency_ac_no }}">
+                                            {{ $option->option_name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('payment_instruction_option')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
                         </div>
-                        <div class="col-md-3">
-                            <label for="bank_code" class="form-label">Bank Code</label>
-                            <input type="text" class="form-control @error('bank_code') is-invalid @enderror" id="bank_code" name="bank_code" value="{{ old('bank_code') }}" required>
-                            @error('bank_code')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                        </div>
-                        <div class="col-md-3">
-                            <label for="swift_bic" class="form-label">SWIFT/BIC</label>
-                            <input type="text" class="form-control @error('swift_bic') is-invalid @enderror" id="swift_bic" name="swift_bic" value="{{ old('swift_bic') }}" required>
-                            @error('swift_bic')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                        </div>
-                        <div class="col-md-3">
-                            <label for="multi_currency_ac_no" class="form-label">Multi-Currency Account No</label>
-                            <input type="text" class="form-control @error('multi_currency_ac_no') is-invalid @enderror" id="multi_currency_ac_no" name="multi_currency_ac_no" value="{{ old('multi_currency_ac_no') }}" required>
-                            @error('multi_currency_ac_no')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        
+                        <!-- Payment Instruction Details -->
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="account_name" class="form-label">Account Name</label>
+                                <input type="text" class="form-control @error('account_name') is-invalid @enderror" id="account_name" name="account_name" value="{{ old('account_name') }}" required>
+                                @error('account_name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="account_number" class="form-label">Account Number</label>
+                                <input type="text" class="form-control @error('account_number') is-invalid @enderror" id="account_number" name="account_number" value="{{ old('account_number') }}" required>
+                                @error('account_number')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="bank_code" class="form-label">Bank Code</label>
+                                <input type="text" class="form-control @error('bank_code') is-invalid @enderror" id="bank_code" name="bank_code" value="{{ old('bank_code') }}" required>
+                                @error('bank_code')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="branch_code" class="form-label">Branch Code</label>
+                                <input type="text" class="form-control @error('branch_code') is-invalid @enderror" id="branch_code" name="branch_code" value="{{ old('branch_code') }}" required>
+                                @error('branch_code')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="swift_bic" class="form-label">SWIFT/BIC</label>
+                                <input type="text" class="form-control @error('swift_bic') is-invalid @enderror" id="swift_bic" name="swift_bic" value="{{ old('swift_bic') }}" required>
+                                @error('swift_bic')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="swift_code" class="form-label">SWIFT Code</label>
+                                <input type="text" class="form-control @error('swift_code') is-invalid @enderror" id="swift_code" name="swift_code" value="{{ old('swift_code') }}" required>
+                                @error('swift_code')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="account_location" class="form-label">Account Location</label>
+                                <input type="text" class="form-control @error('account_location') is-invalid @enderror" id="account_location" name="account_location" value="{{ old('account_location') }}" required>
+                                @error('account_location')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="bank_name" class="form-label">Bank Name</label>
+                                <input type="text" class="form-control @error('bank_name') is-invalid @enderror" id="bank_name" name="bank_name" value="{{ old('bank_name') }}" required>
+                                @error('bank_name')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-6">
+                                <label for="bank_address" class="form-label">Bank Address</label>
+                                <input type="text" class="form-control @error('bank_address') is-invalid @enderror" id="bank_address" name="bank_address" value="{{ old('bank_address') }}" required>
+                                @error('bank_address')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="account_type" class="form-label">Account Type</label>
+                                <input type="text" class="form-control @error('account_type') is-invalid @enderror" id="account_type" name="account_type" value="{{ old('account_type') }}" required>
+                                @error('account_type')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
+                            <div class="col-md-3">
+                                <label for="multi_currency_ac_no" class="form-label">Multi-Currency Account No</label>
+                                <input type="text" class="form-control @error('multi_currency_ac_no') is-invalid @enderror" id="multi_currency_ac_no" name="multi_currency_ac_no" value="{{ old('multi_currency_ac_no') }}" required>
+                                @error('multi_currency_ac_no')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                            </div>
                         </div>
                     </div>
                 </div>

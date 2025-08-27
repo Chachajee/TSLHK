@@ -508,6 +508,70 @@
             font-size: 13px;
         }
 
+        /* Signature Section */
+        .signature-section {
+            width: 100%;
+            display: table;
+            margin-bottom: 30px;
+            margin-top: 40px;
+        }
+
+        .signature-left {
+            display: table-cell;
+            width: 50%;
+            vertical-align: top;
+            padding-right: 20px;
+        }
+
+        .signature-right {
+            display: table-cell;
+            width: 50%;
+            vertical-align: top;
+            padding-left: 20px;
+            text-align: right;
+        }
+
+        .signature-box {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 30px;
+            background: #f7fafc;
+            text-align: center;
+            min-height: 200px;
+            position: relative;
+        }
+
+        .signature-stamp {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .signature-stamp img {
+            max-width: 280px;
+            max-height: 180px;
+            opacity: 0.9;
+        }
+
+        .signature-label {
+            font-size: 12px;
+            color: #4a5568;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 10px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 10px;
+        }
+
+        .authorized-signature {
+            background: #edf2f7;
+            border-left: 4px solid #667eea;
+        }
+
+        .company-stamp {
+            background: #f0fff4;
+            border-left: 4px solid #48bb78;
+        }
+
         /* Footer */
         .footer {
             background: #2d3748;
@@ -630,7 +694,7 @@
                         </div>
                         <div class="company-details">
                             <h1>TOTAL SUPPORT LIMITED</h1>
-                            <div class="company-tagline">YOUR ONE STOP SOLUTION</div>
+                            <div class="company-tagline">YOUR ONE STOP SOLUTION</div>
                             <div class="company-address">
                                 1/F MAU LAM COMM 16-18 MAU LAM ST JORDAN HONG KONG<br>
                                 Phone: +852 56445012 | Email: tslhk2023@gmail.com<br>
@@ -871,6 +935,9 @@
 
             <!-- Payment Instructions -->
             @if($paymentInstructions)
+            <br>
+            <br>
+            <br>
                 <div class="payment-section">
                     <div class="payment-title">Payment Instructions</div>
                     <div class="payment-grid">
@@ -879,8 +946,32 @@
                                 <div class="payment-item">
                                     <table>
                                         <tr>
-                                            <td class="payment-label">Bank Name:</td>
-                                            <td class="payment-value">{{ $paymentInstructions->bank_name ?? 'N/A' }}</td>
+                                            <td class="payment-label">Account Name:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->account_name ?? 'N/A' }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="payment-item">
+                                    <table>
+                                        <tr>
+                                            <td class="payment-label">Account Number:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->account_number ?? 'N/A' }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="payment-item">
+                                    <table>
+                                        <tr>
+                                            <td class="payment-label">Bank Code:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->bank_code ?? 'N/A' }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="payment-item">
+                                    <table>
+                                        <tr>
+                                            <td class="payment-label">Branch Code:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->branch_code ?? 'N/A' }}</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -895,9 +986,8 @@
                                 <div class="payment-item">
                                     <table>
                                         <tr>
-                                            <td class="payment-label">Account Name:</td>
-                                            <td class="payment-value">
-                                                {{ $paymentInstructions->account_name ?? 'TOTAL SUPPORT LIMITED' }}</td>
+                                            <td class="payment-label">SWIFT Code:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->swift_code ?? 'N/A' }}</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -906,17 +996,16 @@
                                 <div class="payment-item">
                                     <table>
                                         <tr>
-                                            <td class="payment-label">Bank Code:</td>
-                                            <td class="payment-value">{{ $paymentInstructions->bank_code ?? 'N/A' }}</td>
+                                            <td class="payment-label">Account Location:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->account_location ?? 'N/A' }}</td>
                                         </tr>
                                     </table>
                                 </div>
                                 <div class="payment-item">
                                     <table>
                                         <tr>
-                                            <td class="payment-label">Account No:</td>
-                                            <td class="payment-value">
-                                                {{ $paymentInstructions->multi_currency_ac_no ?? 'N/A' }}</td>
+                                            <td class="payment-label">Bank Name:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->bank_name ?? 'N/A' }}</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -925,6 +1014,22 @@
                                         <tr>
                                             <td class="payment-label">Bank Address:</td>
                                             <td class="payment-value">{{ $paymentInstructions->bank_address ?? 'N/A' }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="payment-item">
+                                    <table>
+                                        <tr>
+                                            <td class="payment-label">Account Type:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->account_type ?? 'N/A' }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="payment-item">
+                                    <table>
+                                        <tr>
+                                            <td class="payment-label">Multi-Currency Account No:</td>
+                                            <td class="payment-value">{{ $paymentInstructions->multi_currency_ac_no ?? 'N/A' }}</td>
                                         </tr>
                                     </table>
                                 </div>
@@ -941,6 +1046,19 @@
                     <div class="notes-content">{{ $invoice->notes }}</div>
                 </div>
             @endif
+
+            <!-- Signature Section -->
+            <div class="signature-section">
+                <div class="signature-right" style="width: 100%; text-align: right;">
+                    <!-- Company Stamp with Signature -->
+                    <div class="signature-box company-stamp">
+                        <div class="signature-label">Authorized Signature</div>
+                        <div class="signature-stamp">
+                            <img src="https://tslhk.com/assets/img/sign.png" alt="Company Signature & Stamp" style="max-width: 280px; max-height: 180px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Footer -->
@@ -952,7 +1070,7 @@
                             style="max-width: 100%; height: auto;">
                     </div>
                     <div class="footer-company">TOTAL SUPPORT LIMITED</div>
-                    <div class="footer-tagline">YOUR ONE STOP SOLUTION</div>
+                    <div class="footer-tagline">YOUR ONE STOP SOLUTION</div>
                 </div>
                 <div class="footer-center">
                     <div class="footer-thank-you">Thank you for your business!</div>

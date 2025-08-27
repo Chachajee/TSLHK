@@ -14,7 +14,7 @@
 
         body {
             font-family: DejaVu Sans, sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             line-height: 1.6;
             color: #1a202c;
             background: #f7fafc;
@@ -87,12 +87,12 @@
         }
 
         .company-tagline {
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: 8px;
         }
 
         .company-address {
-            font-size: 12px;
+            font-size: 14px;
             line-height: 1.4;
         }
 
@@ -114,7 +114,7 @@
         }
 
         .invoice-date {
-            font-size: 14px;
+            font-size: 16px;
             margin-bottom: 10px;
         }
 
@@ -122,7 +122,7 @@
             display: inline-block;
             padding: 6px 15px;
             border-radius: 15px;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: bold;
             text-transform: uppercase;
         }
@@ -194,14 +194,14 @@
             color: #4a5568;
             margin-bottom: 12px;
             line-height: 1.5;
-            font-size: 14px;
+            font-size: 16px;
         }
 
         .contact-info {
             margin-top: 12px;
             padding-top: 12px;
             border-top: 1px solid #e2e8f0;
-            font-size: 12px;
+            font-size: 14px;
             color: #718096;
         }
 
@@ -252,14 +252,31 @@
         .detail-label {
             font-weight: bold;
             color: #4a5568;
-            font-size: 12px;
+            font-size: 14px;
         }
 
         .detail-value {
-            color: #1a202c;
             font-weight: bold;
-            font-size: 12px;
-            text-align: right;
+            color: #1a202c;
+            font-size: 15px;
+        }
+
+        .invoice-number-large {
+            font-size: 18px !important;
+            font-weight: bold !important;
+            color: #667eea !important;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .detail-row {
+            margin-bottom: 8px;
+            padding: 6px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
         }
 
         /* Items Table */
@@ -289,7 +306,7 @@
             font-weight: bold;
             padding: 12px 8px;
             text-align: left;
-            font-size: 12px;
+            font-size: 14px;
             text-transform: uppercase;
             border-bottom: 1px solid #e2e8f0;
         }
@@ -297,7 +314,7 @@
         .items-table td {
             padding: 12px 8px;
             border-bottom: 1px solid #f7fafc;
-            font-size: 12px;
+            font-size: 14px;
             background: white;
         }
 
@@ -334,9 +351,15 @@
         }
 
         .totals-quantity {
+            text-align: center;
             font-weight: bold;
-            color: #667eea;
-            font-size: 13px;
+            color: #2d3748;
+        }
+
+        .totals-unit-price {
+            text-align: center;
+            font-weight: bold;
+            color: #2d3748;
         }
 
         .totals-rate {
@@ -474,13 +497,13 @@
         .payment-label {
             font-weight: bold;
             color: #4a5568;
-            font-size: 12px;
+            font-size: 14px;
         }
 
         .payment-value {
             color: #1a202c;
             font-weight: bold;
-            font-size: 13px;
+            font-size: 15px;
             text-align: right;
         }
 
@@ -505,29 +528,19 @@
             font-style: italic;
             color: #744210;
             line-height: 1.5;
-            font-size: 13px;
+            font-size: 15px;
         }
 
-        /* Signature Section */
+        /* Signature Section - Updated to align right */
         .signature-section {
             width: 100%;
-            display: table;
             margin-bottom: 30px;
             margin-top: 40px;
-        }
-
-        .signature-left {
-            display: table-cell;
-            width: 50%;
-            vertical-align: top;
-            padding-right: 20px;
+            text-align: right;
         }
 
         .signature-right {
-            display: table-cell;
-            width: 50%;
-            vertical-align: top;
-            padding-left: 20px;
+            display: inline-block;
             text-align: right;
         }
 
@@ -539,11 +552,13 @@
             text-align: center;
             min-height: 200px;
             position: relative;
+            display: inline-block;
+            width: 350px;
         }
 
         .signature-stamp {
             text-align: center;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         .signature-stamp img {
@@ -553,13 +568,46 @@
         }
 
         .signature-label {
+            font-size: 14px;
+            color: #2d3748;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .company-details {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .company-details div {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .company-details div:first-child {
+            font-size: 12px;
+            color: #4a5568;
+        }
+
+        .company-details div:nth-child(2) {
+            font-size: 16px;
+            color: #2d3748;
+        }
+
+        .company-details div:last-child {
+            font-size: 14px;
+            color: #2d3748;
+        }
+
+        .signature-label-bottom {
             font-size: 12px;
             color: #4a5568;
             font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 10px;
+            margin-top: 15px;
             border-top: 1px solid #e2e8f0;
-            padding-top: 10px;
+            padding-top: 15px;
         }
 
         .authorized-signature {
@@ -697,7 +745,7 @@
                             <div class="company-tagline">YOUR ONE STOP SOLUTION</div>
                             <div class="company-address">
                                 1/F MAU LAM COMM 16-18 MAU LAM ST JORDAN HONG KONG<br>
-                                Phone: +852 56445012 | Email: tslhk2023@gmail.com<br>
+                                Phone: +852 56445012 | Email: info@tslhk.com<br>
                                 Website: www.tslhk.com
                             </div>
                         </div>
@@ -706,10 +754,10 @@
 
                 <div class="invoice-header">
                     <div class="invoice-title">Invoice</div>
-                    <div class="invoice-number">#{{ $invoice->invoice_no }}</div>
-                    <div class="invoice-date">
+                    {{-- <div class="invoice-number">#{{ $invoice->invoice_no }}</div> --}}
+                    {{-- <div class="invoice-date">
                         {{ $invoice->invoice_date ? \Carbon\Carbon::parse($invoice->invoice_date)->format('F d, Y') : 'N/A' }}
-                    </div>
+                    </div> --}}
                     <div style="margin-top: 10px;">
                         <span
                             class="status-badge status-{{ $invoice->balance_due > 0 ? ($invoice->paid > 0 ? 'partial' : 'unpaid') : 'paid' }}">
@@ -816,6 +864,22 @@
                     <div class="invoice-details">
                         <div class="details-title">Invoice Details</div>
                         <div class="details-grid">
+                             <div class="detail-item">
+                                <table>
+                                    <tr>
+                                        <td class="detail-label">Date:</td>
+                                        <td class="detail-value">
+                                            {{ $invoice->invoice_date ? \Carbon\Carbon::parse($invoice->invoice_date)->format('M d, Y') : 'N/A' }}
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="detail-label">Invoice No:</td>
+                                        <td class="detail-value invoice-number-large">
+                                            #{{ $invoice->invoice_no }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                             <div class="detail-item">
                                 <table>
                                     <tr>
@@ -824,16 +888,7 @@
                                     </tr>
                                 </table>
                             </div>
-                            <div class="detail-item">
-                                <table>
-                                    <tr>
-                                        <td class="detail-label">Date:</td>
-                                        <td class="detail-value">
-                                            {{ $invoice->invoice_date ? \Carbon\Carbon::parse($invoice->invoice_date)->format('M d, Y') : 'N/A' }}
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                           
                             @if($invoice->ship_via)
                             <div class="detail-item">
                                 <table>
@@ -874,8 +929,8 @@
                     <thead>
                         <tr>
                             <th>Description</th>
+                            <th class="text-center">Unit Price</th>
                             <th class="text-center">Quantity</th>
-                            <th class="text-right">Rate</th>
                             <th class="text-right">Amount</th>
                         </tr>
                     </thead>
@@ -883,18 +938,18 @@
                         @if($items && count($items) > 0)
                             @foreach($items as $item)
                                 <tr>
-                                    <td>{{ $item->description ?? 'N/A' }}</td>
-                                    <td class="text-center">{{ $item->quantity ?? 0 }}</td>
-                                    <td class="text-right">US${{ number_format($item->rate ?? 0, 2) }}</td>
-                                    <td class="text-right amount">US${{ number_format($item->amount ?? 0, 2) }}</td>
+                                    <td class="item-description">{{ $item->description }}</td>
+                                    <td class="text-center">US${{ number_format($item->rate, 2) }}</td>
+                                    <td class="text-center">{{ $item->quantity }}</td>
+                                    <td class="text-right amount">US${{ number_format($item->amount, 2) }}</td>
                                 </tr>
                             @endforeach
                             @if(count($items) > 1)
                                 <!-- Totals Row -->
                                 <tr class="totals-row">
                                     <td class="totals-label"><strong>Totals:</strong></td>
+                                    <td class="text-center totals-unit-price"><strong></strong></td>
                                     <td class="text-center totals-quantity"><strong>{{ $items->sum('quantity') ?? 0 }}</strong></td>
-                                    <td class="text-right totals-rate"><strong>US${{ number_format($items->avg('rate') ?? 0, 2) }}</strong></td>
                                     <td class="text-right totals-amount"><strong>US${{ number_format($items->sum('amount') ?? 0, 2) }}</strong></td>
                                 </tr>
                             @endif
@@ -954,7 +1009,7 @@
                                 <div class="payment-item">
                                     <table>
                                         <tr>
-                                            <td class="payment-label">Account Number:</td>
+                                            <td class="payment-label">Multi-Currency Account No:</td>
                                             <td class="payment-value">{{ $paymentInstructions->account_number ?? 'N/A' }}</td>
                                         </tr>
                                     </table>
@@ -975,14 +1030,14 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="payment-item">
+                                {{-- <div class="payment-item">
                                     <table>
                                         <tr>
                                             <td class="payment-label">SWIFT/BIC:</td>
                                             <td class="payment-value">{{ $paymentInstructions->swift_bic ?? 'N/A' }}</td>
                                         </tr>
                                     </table>
-                                </div>
+                                </div> --}}
                                 <div class="payment-item">
                                     <table>
                                         <tr>
@@ -1025,14 +1080,14 @@
                                         </tr>
                                     </table>
                                 </div>
-                                <div class="payment-item">
+                                {{-- <div class="payment-item">
                                     <table>
                                         <tr>
                                             <td class="payment-label">Multi-Currency Account No:</td>
                                             <td class="payment-value">{{ $paymentInstructions->multi_currency_ac_no ?? 'N/A' }}</td>
                                         </tr>
                                     </table>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>
@@ -1048,8 +1103,9 @@
             @endif
 
             <!-- Signature Section -->
+            @if($invoice->show_signature)
             <div class="signature-section">
-                <div class="signature-right" style="width: 100%; text-align: right;">
+                <div class="signature-right">
                     <!-- Company Stamp with Signature -->
                     <div class="signature-box company-stamp">
                         <div class="signature-label">Authorized Signature</div>
@@ -1059,6 +1115,7 @@
                     </div>
                 </div>
             </div>
+            @endif
         </div>
 
         <!-- Footer -->
@@ -1076,7 +1133,7 @@
                     <div class="footer-thank-you">Thank you for your business!</div>
                 </div>
                 <div class="footer-right">
-                    <div class="footer-generated">Generated on {{ now()->format('M d, Y \a\t g:i A') }}</div>
+                    <div class="footer-generated"></div>
                 </div>
             </div>
         </div>

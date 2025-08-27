@@ -15,12 +15,14 @@ class CreditNote extends Model
         'amount_spent',
         'credit_balance',
         'notes',
+        'show_signature',
     ];
 
     protected $casts = [
         'amount_paid' => 'decimal:2',
         'amount_spent' => 'decimal:2',
         'credit_balance' => 'decimal:2',
+        'show_signature' => 'boolean',
     ];
 
     /**

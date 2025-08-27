@@ -16,12 +16,14 @@ class SalarySlip extends Model
         'period_from',
         'period_to',
         'generated_date',
+        'show_signature',
     ];
 
     protected $casts = [
         'period_from' => 'date',
         'period_to' => 'date',
         'generated_date' => 'date',
+        'show_signature' => 'boolean',
     ];
 
     /**

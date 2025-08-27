@@ -49,6 +49,7 @@ class SalaryController extends Controller
                 'period_from' => $request->period_from,
                 'period_to' => $request->period_to,
                 'generated_date' => $request->generated_date,
+                'show_signature' => $request->boolean('show_signature'),
             ]);
 
             // Create salary payments
@@ -146,6 +147,7 @@ class SalaryController extends Controller
                 'period_from' => $request->period_from,
                 'period_to' => $request->period_to,
                 'generated_date' => $request->generated_date,
+                'show_signature' => $request->boolean('show_signature'),
             ]);
 
             // Delete existing payments and create new ones

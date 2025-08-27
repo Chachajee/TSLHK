@@ -178,7 +178,28 @@
                                 </div>
                             </div>
 
-                            <!-- Submit Buttons -->
+                        <!-- Signature Options -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="card bg-light">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Signature Options</h6>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="show_signature" name="show_signature" value="1" {{ old('show_signature') ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="show_signature">
+                                                Include company signature and stamp in PDF
+                                            </label>
+                                        </div>
+                                        <small class="text-muted">
+                                            When checked, the PDF will include the company signature and stamp section. 
+                                            When unchecked, the signature section will not appear in the generated PDF.
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Buttons -->
                             <div class="row">
                                 <div class="col-12">
                                     <div class="d-flex gap-2">

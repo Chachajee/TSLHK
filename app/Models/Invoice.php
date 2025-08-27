@@ -21,6 +21,7 @@ class Invoice extends Model
         'paid',
         'balance_due',
         'notes',
+        'show_signature',
     ];
 
     protected $casts = [
@@ -30,6 +31,7 @@ class Invoice extends Model
         'total' => 'decimal:2',
         'paid' => 'decimal:2',
         'balance_due' => 'decimal:2',
+        'show_signature' => 'boolean',
     ];
 
     public function items()

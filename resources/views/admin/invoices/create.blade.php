@@ -371,6 +371,29 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
             </div>
+            
+            <!-- Signature Options -->
+            <div class="col-12 col-lg-6 mt-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-light d-flex align-items-center">
+                        <i class="ti ti-signature text-primary me-2"></i>
+                        <span class="fw-bold">Signature Options</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="show_signature" name="show_signature" value="1" {{ old('show_signature') ? 'checked' : '' }}>
+                            <label class="form-check-label" for="show_signature">
+                                Include company signature and stamp in PDF
+                            </label>
+                        </div>
+                        <small class="text-muted">
+                            When checked, the PDF will include the company signature and stamp section. 
+                            When unchecked, the signature section will not appear in the generated PDF.
+                        </small>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Payment Instructions -->
             <div class="col-12 mt-4">
                 <div class="card shadow-sm">
@@ -417,22 +440,22 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <label for="account_number" class="form-label">Account Number</label>
                                 <input type="text" class="form-control @error('account_number') is-invalid @enderror" id="account_number" name="account_number" value="{{ old('account_number') }}" required>
                                 @error('account_number')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                            </div>
-                            <div class="col-md-3">
-                                <label for="bank_code" class="form-label">Bank Code</label>
-                                <input type="text" class="form-control @error('bank_code') is-invalid @enderror" id="bank_code" name="bank_code" value="{{ old('bank_code') }}" required>
-                                @error('bank_code')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="bank_code" class="form-label">Bank Code</label>
+                            <input type="text" class="form-control @error('bank_code') is-invalid @enderror" id="bank_code" name="bank_code" value="{{ old('bank_code') }}" required>
+                            @error('bank_code')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
                             <div class="col-md-3">
                                 <label for="branch_code" class="form-label">Branch Code</label>
                                 <input type="text" class="form-control @error('branch_code') is-invalid @enderror" id="branch_code" name="branch_code" value="{{ old('branch_code') }}" required>
                                 @error('branch_code')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
-                            <div class="col-md-3">
-                                <label for="swift_bic" class="form-label">SWIFT/BIC</label>
-                                <input type="text" class="form-control @error('swift_bic') is-invalid @enderror" id="swift_bic" name="swift_bic" value="{{ old('swift_bic') }}" required>
-                                @error('swift_bic')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                            </div>
+                        <div class="col-md-3">
+                            <label for="swift_bic" class="form-label">SWIFT/BIC</label>
+                            <input type="text" class="form-control @error('swift_bic') is-invalid @enderror" id="swift_bic" name="swift_bic" value="{{ old('swift_bic') }}" required>
+                            @error('swift_bic')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        </div>
                             <div class="col-md-3">
                                 <label for="swift_code" class="form-label">SWIFT Code</label>
                                 <input type="text" class="form-control @error('swift_code') is-invalid @enderror" id="swift_code" name="swift_code" value="{{ old('swift_code') }}" required>
@@ -458,10 +481,10 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <input type="text" class="form-control @error('account_type') is-invalid @enderror" id="account_type" name="account_type" value="{{ old('account_type') }}" required>
                                 @error('account_type')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
-                            <div class="col-md-3">
-                                <label for="multi_currency_ac_no" class="form-label">Multi-Currency Account No</label>
-                                <input type="text" class="form-control @error('multi_currency_ac_no') is-invalid @enderror" id="multi_currency_ac_no" name="multi_currency_ac_no" value="{{ old('multi_currency_ac_no') }}" required>
-                                @error('multi_currency_ac_no')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <div class="col-md-3">
+                            <label for="multi_currency_ac_no" class="form-label">Multi-Currency Account No</label>
+                            <input type="text" class="form-control @error('multi_currency_ac_no') is-invalid @enderror" id="multi_currency_ac_no" name="multi_currency_ac_no" value="{{ old('multi_currency_ac_no') }}" required>
+                            @error('multi_currency_ac_no')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                         </div>
                     </div>

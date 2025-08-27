@@ -44,6 +44,9 @@ class UpdateSalarySlipRequest extends FormRequest
             'deduction_description.*' => 'required|string|max:255',
             'deduction_amount' => 'nullable|array',
             'deduction_amount.*' => 'required|numeric|min:0',
+            
+            // Signature
+            'show_signature' => 'nullable|boolean',
         ];
     }
 

@@ -57,6 +57,7 @@ class InvoiceController extends Controller
                 'paid' => $request->paid,
                 'balance_due' => $request->balance_due,
                 'notes' => $request->notes,
+                'show_signature' => $request->boolean('show_signature'),
             ]);
 
             // Create bill to party
@@ -190,6 +191,7 @@ class InvoiceController extends Controller
                 'paid' => $request->paid,
                 'balance_due' => $request->balance_due,
                 'notes' => $request->notes,
+                'show_signature' => $request->boolean('show_signature'),
             ]);
 
             // Update bill to party

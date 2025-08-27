@@ -37,6 +37,7 @@ class StoreCreditNoteRequest extends FormRequest
             'amount_paid' => 'required|numeric|min:0',
             'amount_spent' => 'required|numeric|min:0',
             'notes' => 'nullable|string|max:1000',
+            'show_signature' => 'nullable|boolean',
         ];
     }
 

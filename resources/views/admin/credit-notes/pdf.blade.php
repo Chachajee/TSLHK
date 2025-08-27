@@ -264,6 +264,86 @@
             padding-top: 8px;
         }
 
+        /* Signature Section */
+        .signature-section {
+            padding: 20px 30px;
+            margin-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .signature-center {
+            display: inline-block;
+            text-align: center;
+        }
+
+        .signature-box {
+            display: inline-block;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 30px;
+            background: #f7fafc;
+            min-height: 200px;
+        }
+
+        .signature-label {
+            font-weight: bold;
+            color: #2d3748;
+            font-size: 14px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .company-details {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .company-details div {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #2d3748;
+        }
+
+        .company-details div:first-child {
+            font-size: 12px;
+            color: #4a5568;
+        }
+
+        .company-details div:nth-child(2) {
+            font-size: 16px;
+            color: #2d3748;
+        }
+
+        .company-details div:last-child {
+            font-size: 14px;
+            color: #2d3748;
+        }
+
+        .signature-stamp {
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            border-radius: 8px;
+            background: #f7fafc;
+            margin: 20px 0;
+        }
+
+        .signature-stamp img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .signature-label-bottom {
+            font-weight: bold;
+            color: #2d3748;
+            font-size: 12px;
+            margin-top: 15px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 15px;
+        }
+
         /* Print optimizations */
         @page {
             margin: 0.5in;
@@ -392,6 +472,27 @@
                 </div>
             @endif
         </div>
+
+        <!-- Signature Section -->
+        @if($creditNote->show_signature)
+        <div class="signature-section">
+            <div class="signature-center" style="width: 100%; text-align: center;">
+                <!-- Company Stamp with Signature -->
+                <div class="signature-box company-stamp">
+                    <div class="signature-label">AUTHORIZED SIGNATURE</div>
+                    <div class="company-details">
+                        <div>For and on behalf of</div>
+                        <div>TOTAL SUPPORT LIMITED</div>
+                        <div>通勵有限公司</div>
+                    </div>
+                    <div class="signature-stamp">
+                        <img src="https://tslhk.com/assets/img/sign.png" alt="Company Signature & Stamp" style="max-width: 280px; max-height: 180px;">
+                    </div>
+                    <div class="signature-label-bottom">Authorized Signature(s)</div>
+                </div>
+            </div>
+        </div>
+        @endif
 
         <!-- Footer -->
         <div class="footer">

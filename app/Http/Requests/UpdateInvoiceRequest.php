@@ -72,6 +72,9 @@ class UpdateInvoiceRequest extends FormRequest
             // Notes
             'notes' => 'nullable|string',
             
+            // Signature
+            'show_signature' => 'nullable|boolean',
+            
             // Payment Instructions
             'payment_instruction_option' => 'required|string|max:255',
             'account_name' => 'required|string|max:255',

@@ -44,6 +44,7 @@ class CreditNoteController extends Controller
                 'amount_spent' => $request->amount_spent,
                 'credit_balance' => $creditBalance,
                 'notes' => $request->notes,
+                'show_signature' => $request->boolean('show_signature'),
             ]);
 
             return redirect()->route('admin.credit-notes.index')
@@ -100,6 +101,7 @@ class CreditNoteController extends Controller
                 'amount_spent' => $request->amount_spent,
                 'credit_balance' => $creditBalance,
                 'notes' => $request->notes,
+                'show_signature' => $request->boolean('show_signature'),
             ]);
 
             return redirect()->route('admin.credit-notes.index')

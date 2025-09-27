@@ -2,11 +2,6 @@
 
 @section('title', 'Create Credit Note')
 
-@section('vendor-style')
-    @vite([
-        'resources/assets/vendor/libs/cleavejs/cleave.scss'
-    ])
-@endsection
 
 @section('vendor-script')
     @vite([
